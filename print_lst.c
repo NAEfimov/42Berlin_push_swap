@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   print_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:08 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/08 15:38:02 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/08 15:58:09 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int	print_error(void)
 	write(2, "Error\n", 6);
 	return (1);
 }
-
-// Sort linked list <lst_a>
-// void	make_sort(void);
 
 //Print list vertical
 void	printv_lst(t_list *lst)
