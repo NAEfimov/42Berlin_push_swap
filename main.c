@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/08 11:18:44 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/08 11:34:50 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	*read_num(char *str)
 		str++;
 	if (*str == '-' || *str == '+')
 	{
-		if  (*str == '-')
+		if (*str == '-')
 			sign = -1;
 		str++;
 	}
@@ -44,15 +44,16 @@ int	*read_num(char *str)
 	if (read == NULL)
 		return (NULL);
 	*read = (int) num;
-//	printf("num: %i\nread: %i\n", (int) num, *read);
 	return (read);
 }
+
 // Function to free list node content
 void	del(void *content)
 {
 	free(content);
 }
-void check_dup(int **num, t_list *lst)
+
+void	check_dup(int **num, t_list *lst)
 {
 	while (lst != NULL)
 	{
@@ -73,9 +74,9 @@ int	read_args(int argc, char *argv[], t_list **lst)
 
 	i = 0;
 	if (argc == 1)
-		return(0);
+		return (0);
 	else
-	{ 
+	{
 		i = 1;
 		while (i < argc)
 		{
@@ -95,7 +96,7 @@ int	read_args(int argc, char *argv[], t_list **lst)
 }
 
 // Print a string <*err> on the standard error and return <0>
-int	print_error()
+int	print_error(void)
 {
 	write(2, "Error\n", 6);
 	return (1);
@@ -104,14 +105,26 @@ int	print_error()
 // Sort linked list <lst_a>
 // void	make_sort(void);
 
-//Print list
-void print_lst(t_list *lst)
+//Print list vertical
+void	printv_lst(t_list *lst)
 {
 	while (lst != NULL)
 	{
 		printf("%i\n", *(int *)lst->content);
 		lst = lst->next;
 	}
+}
+
+//Print list vertical
+void	printh_lst(t_list *lst, char c)
+{
+	printf("%c| ", c);
+	while (lst != NULL)
+	{
+		printf("%i ", *(int *)lst->content);
+		lst = lst->next;
+	}
+	printf("\n");
 }
 
 int	main(int argc, char *argv[])
@@ -127,7 +140,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	// else
 	// 	make_sort();
-	print_lst(lst_a);
+	printh_lst(lst_a, 'a');
 	ft_lstclear(&lst_a, del);
 	return (0);
 }
