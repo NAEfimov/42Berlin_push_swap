@@ -3,21 +3,22 @@ NAME        := push_swap
 #------------------------------------------------#
 #   INGREDIENTS                                  #
 #------------------------------------------------#
-# LIBS        libraries to be used
-# LIBS_TARGET libraries to be built
+# LIBS			libraries to be used
+# LIBS_TARGET	libraries to be built
 #
-# INCS        header file locations
+# INCS			header file locations
 #
-# SRCS      source files
+# SRCS			source files
 #
-# OBJS      object files
-# DEPS      dependency files
+# OBJS			object files
+# DEPS			dependency files
 #
-# CC        compiler
-# CFLAGS    compiler flags
-# CPPFLAGS  preprocessor flags
-# LDFLAGS     linker flags
-# LDLIBS      libraries name
+# CC			compiler
+# CFLAGS		compiler flags
+# CPPFLAGS		preprocessor flags
+# IFLAGS		Include flags
+# LDFLAGS		linker flags
+# LDLIBS		libraries name
 
 LIBS        := ft
 LIBS_TARGET := libft/libft.a
@@ -33,15 +34,15 @@ DEPS		:= $(OBJS:.o=.d)
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 CPPFLAGS	:= -MMD -MP
-IFLAGS     := $(addprefix -I,$(INCS))
+IFLAGS		:= $(addprefix -I,$(INCS))
 LDFLAGS     := $(addprefix -L,$(dir $(LIBS_TARGET)))
 LDLIBS      := $(addprefix -l,$(LIBS))
 
 #------------------------------------------------#
 #   UTENSILS                                     #
 #------------------------------------------------#
-# RM        force remove
-# MAKEFLAGS make flags
+# RM		force remove
+# MAKEFLAGS	make flags
 
 RM			= rm -f
 # MAKEFLAGS	+= --no-print-directory
@@ -49,12 +50,12 @@ RM			= rm -f
 #------------------------------------------------#
 #   RECIPES                                      #
 #------------------------------------------------#
-# all       default goal
-# $(NAME)   link .o -> library
-# %.o       compilation .c -> .o
-# clean     remove .o
-# fclean    remove .o + binary
-# re        remake default goal
+# all		default goal
+# $(NAME)	link .o -> library
+# %.o		compilation .c -> .o
+# clean		remove .o
+# fclean	remove .o + binary
+# re		remake default goal
 
 all: $(NAME)
 
