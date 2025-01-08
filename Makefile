@@ -26,7 +26,9 @@ LIBS_TARGET := libft/libft.a
 INCS        := . libft
 
 SRCS		:=		\
-	main.c
+	main.c			\
+	read_lst.c		\
+	print_lst.c
 
 OBJS		:= $(SRCS:%.c=%.o)
 DEPS		:= $(OBJS:.o=.d)
@@ -45,7 +47,7 @@ LDLIBS      := $(addprefix -l,$(LIBS))
 # MAKEFLAGS	make flags
 
 RM			= rm -f
-# MAKEFLAGS	+= --no-print-directory
+MAKEFLAGS	+= --no-print-directory
 
 #------------------------------------------------#
 #   RECIPES                                      #
@@ -60,7 +62,7 @@ RM			= rm -f
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(IFLAGS) -o $@ $< $(LDLIBS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(IFLAGS) -o $@ $(OBJS) $(LDLIBS)
 	$(info CREATED $(NAME))
 
 $(LIBS_TARGET):
