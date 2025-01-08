@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/07 21:16:43 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/08 11:18:44 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,25 @@ int	*read_num(char *str)
 //	printf("num: %i\nread: %i\n", (int) num, *read);
 	return (read);
 }
+// Function to free list node content
+void	del(void *content)
+{
+	free(content);
+}
+void check_dup(int **num, t_list *lst)
+{
+	while (lst != NULL)
+	{
+		if ((*num != NULL) && **num == *(int *)lst->content)
+			*num = NULL;
+		lst = lst->next;
+	}
+}
 
 // Check for correct input and read it to a list of integers
 // Get <argc> and <argv> from main function as input and <*lst_a> as output list
 // Return: <-1> if error; <0> if no args; length of <lst_a> if read is OK
-int	read_input(int argc, char *argv[], t_list **lst_a)
+int	read_args(int argc, char *argv[], t_list **lst)
 {
 	int		i;
 	int		*num;
@@ -66,10 +80,14 @@ int	read_input(int argc, char *argv[], t_list **lst_a)
 		while (i < argc)
 		{
 			num = read_num(argv[i]);
+			check_dup(&num, *lst);
 			if (num == NULL)
-				return (-1); 			// CLEAN LIST!!!
-			new_node = ft_lstnew(num);	// Check for duplicates!!!
-			ft_lstadd_back(lst_a, new_node);
+			{
+				ft_lstclear(lst, del);
+				return (-1);
+			}
+			new_node = ft_lstnew(num);
+			ft_lstadd_back(lst, new_node);
 			i++;
 		}
 	}
@@ -80,7 +98,7 @@ int	read_input(int argc, char *argv[], t_list **lst_a)
 int	print_error()
 {
 	write(2, "Error\n", 6);
-	return (0);
+	return (1);
 }
 
 // Sort linked list <lst_a>
@@ -102,7 +120,7 @@ int	main(int argc, char *argv[])
 	t_list	*lst_a;
 
 	lst_a = NULL;
-	len_a = read_input(argc, argv, &lst_a);
+	len_a = read_args(argc, argv, &lst_a);
 	if (len_a < 0)
 		return (print_error());
 	else if (len_a == 0)
@@ -110,5 +128,6 @@ int	main(int argc, char *argv[])
 	// else
 	// 	make_sort();
 	print_lst(lst_a);
+	ft_lstclear(&lst_a, del);
 	return (0);
 }
