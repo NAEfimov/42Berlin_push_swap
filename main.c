@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/08 18:03:44 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/09 17:19:52 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,24 +129,34 @@ int	lst_is_sorted_up(t_list *lst, int n)
 }
 
 // Sort 3 first integers in the list
-/* void	sort_triad_down(t_list **lst)
+void	sort_triad_down(t_list **lst, char c)
 {
-	int		num[3];
-	int		i;
-	t_list	*node;
+	int	s;
 	
-	node = *lst;
-	i = -1;
-	while (++i < 3)
+	s = ft_lstsize(*lst);
+	ft_putstr_fd("--- <sort triad down> ---\n", 1);
+	if (s == 2)
 	{
-		num[i] = get_int(node);
-		node = node->next;
+		if (get_intn(*lst, 1) > get_intn(*lst, 2))
+			s_lst(lst, c);
 	}
-	while (!(lst_is_sorted_down(*lst, 3)))
+	else if (s > 2)
 	{
-		if ()
+		while (!(lst_is_sorted_down(*lst, 3)))
+		{
+			if (get_intn(*lst, 1) > get_intn(*lst, 2))
+				s_lst(lst, c);
+			if (get_intn(*lst, 2) > get_intn(*lst, 3))
+			{
+				r_lst(lst, c);
+				s_lst(lst, c);
+				rr_lst(lst, c);
+			}
+		}
 	}
-} */
+	printh_lst(*lst, c);
+	ft_putstr_fd("--- <end sort> ---\n", 1);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -162,11 +172,8 @@ int	main(int argc, char *argv[])
 	// else
 	// 	make_sort();
 	printh_lst(lst_a, 'a');
-	if (lst_is_sorted_down(lst_a, len))
-		ft_putstr_fd("Sorted down\n", 1);
-	else
-		ft_putstr_fd("NOT sorted down\n", 1);
-	printf("Content [%i]: %i\n", len, get_intn(lst_a, len));
+	sort_triad_down(&lst_a, 'a');
+	printh_lst(lst_a, 'a');
 	ft_lstclear(&lst_a, del_int);
 	return (0);
 }
