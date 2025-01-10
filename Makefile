@@ -28,7 +28,11 @@ INCS        := . libft
 SRCS		:=		\
 	main.c			\
 	read_lst.c		\
-	print_lst.c
+	print_lst.c		\
+	utils_lst.c		\
+	sort_opr.c		\
+	sort_utl.c		\
+	sort_lst.c
 
 OBJS		:= $(SRCS:%.c=%.o)
 DEPS		:= $(OBJS:.o=.d)
