@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/10 15:53:40 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:01:47 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	sort_triad_down(t_list **lst, char c)
 {
 	int	s;
-	
+
 	s = ft_lstsize(*lst);
 	if (s == 2)
 	{
@@ -44,7 +44,7 @@ void	sort_triad_down(t_list **lst, char c)
 void	sort_triad_up(t_list **lst, char c)
 {
 	int	s;
-	
+
 	s = ft_lstsize(*lst);
 	if (s == 2)
 	{
