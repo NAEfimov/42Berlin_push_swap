@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/10 15:57:44 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:14:47 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int	main(int argc, char *argv[])
 {
 	int		len;
 	t_list	*lst_a;
+	t_list	*lst_b;
 
 	lst_a = NULL;
+	lst_b = NULL;
 	len = read_args(argc, argv, &lst_a);
 	if (len < 0)
 		return (print_error());
@@ -30,8 +32,17 @@ int	main(int argc, char *argv[])
 	// else
 	// 	make_sort();
 	printh_lst(lst_a, 'a');
+	printh_lst(lst_b, 'b');
+	p_lst(&lst_a, &lst_b, 'b');
+	p_lst(&lst_a, &lst_b, 'b');
+	printh_lst(lst_a, 'a');
+	printh_lst(lst_b, 'b');
+	p_lst(&lst_b, &lst_a, 'a');
+	printh_lst(lst_a, 'a');
+	printh_lst(lst_b, 'b');
 	// sort_triad_up(&lst_a, 'a');
 	// printh_lst(lst_a, 'a');
 	ft_lstclear(&lst_a, del_int);
+	ft_lstclear(&lst_b, del_int);
 	return (0);
 }

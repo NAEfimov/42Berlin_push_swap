@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:48:51 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/10 15:49:51 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:11:49 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,18 @@ void	s_lst(t_list **lst, char c)
 	first->next = third;
 	*lst = second;
 	write(1, "s", 1);
+	write(1, &c, 1);
+	write(1, "\n", 1);
+}
+
+void	p_lst(t_list **lst_a, t_list **lst_b, char c)
+{
+	t_list	*node;
+
+	node = *lst_a;
+	*lst_a = (*lst_a)->next;
+	ft_lstadd_front(lst_b, node);
+	write(1, "p", 1);
 	write(1, &c, 1);
 	write(1, "\n", 1);
 }
