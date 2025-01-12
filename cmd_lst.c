@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:40:57 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/12 14:02:03 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/12 14:10:26 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	add_cmd(t_list **cmd_lst, int lst, int num)
 	int		*cmd;
 	t_list	*node;
 	
-	cmd = (int *) malloc(sizeof(int) * 2);
+	cmd = (int *) malloc(sizeof(int) * CMD_SIZE);
 	if (cmd == NULL)
 		return (-1);
 	cmd[0] = lst;

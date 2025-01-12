@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/12 13:58:45 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/12 23:07:16 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,15 @@ void	p_lst(t_list **lst_a, t_list **lst_b, char c);
 // Sort utils
 int		lst_is_sorted_down(t_list *lst, int n);
 int		lst_is_sorted_up(t_list *lst, int n);
-int		get_mvalue(t_list *lst, int size);
+int		get_mvalue(t_list *lst, int *cmd);
 
 // Sort list
 void 	make_sort(t_list **lst_a, t_list **lst_b, int len);
 void	sort_triad_down(t_list **lst, char c);
 void	sort_triad_up(t_list **lst, char c);
+void	return_numbers(t_list **lst_a, t_list **lst_b, int *cmd);
+void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
+void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
 
 // Commands list
 int		add_cmd(t_list **cmd_lst, int lst, int num);

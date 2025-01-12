@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/12 14:05:16 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/12 23:38:49 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,85 @@ void	sort_triad_up(t_list **lst, char c)
 	}
 }
 
-void make_sort(t_list **lst_a, t_list **lst_b, int len)
+void	return_numbers(t_list **lst_a, t_list **lst_b, int *cmd)
+{
+	if (cmd[0] == AR)
+		while (cmd[1]-- > 0)
+			p_lst(lst_a, lst_b, 'b');
+	else
+		while (cmd[1]-- > 0)
+			p_lst(lst_b, lst_a, 'a');
+}
+
+void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
+{
+	int	m;
+	int	to_move;
+	int	r_count;
+
+	while (cmd[1] > 3)
+	{
+		to_move = cmd[1] / 2;
+		m = get_mvalue(*lst_a, cmd);
+		add_cmd(cmd_lst, BR, to_move);
+		add_cmd(cmd_lst, B, to_move);
+		r_count = 0;
+		while (to_move > 0)
+		{
+			if (get_int(*lst_a) < m)
+			{
+				p_lst(lst_a, lst_b, 'b');
+				to_move--;
+				cmd[1]--;
+			}
+			else
+			{
+				r_lst(lst_a, 'a');
+				r_count++;
+			}
+		}
+		while (r_count-- > 0)
+			rr_lst(lst_a, 'a');
+	}
+	sort_triad_down(lst_a, 'a');
+}
+
+void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
+{
+	int	m;
+	int	to_move;
+	int	r_count;
+
+	while (cmd[1] > 3)
+	{
+		to_move = cmd[1] / 2;
+		m = get_mvalue(*lst_b, cmd);
+		add_cmd(cmd_lst, AR, to_move);
+		add_cmd(cmd_lst, A, to_move);
+		r_count = 0;
+		while (to_move > 0)
+		{
+			if (get_int(*lst_b) >= m)
+			{
+				p_lst(lst_b, lst_a, 'a');
+				to_move--;
+				cmd[1]--;
+			}
+			else
+			{
+				r_lst(lst_b, 'b');
+				r_count++;
+			}
+		}
+		while (r_count-- > 0)
+			rr_lst(lst_b, 'b');
+	}
+	sort_triad_up(lst_b, 'b');
+	// printh_lst(*lst_a, 'a');
+	// printh_lst(*lst_b, 'b');
+}
+
+void	make_sort(t_list **lst_a, t_list **lst_b, int len)
 {
 	t_list	*cmd_lst;
 	int		*cmd;
@@ -75,26 +153,54 @@ void make_sort(t_list **lst_a, t_list **lst_b, int len)
 	cmd_lst = NULL;
 	init_cmd(&cmd_lst, len);
 	
-	printh_lst(*lst_a, 'a');
-	printh_lst(*lst_b, 'b');
-	print_cmd(cmd_lst);
+	// printh_lst(*lst_a, 'a');
+	// printh_lst(*lst_b, 'b');
+	// print_cmd(cmd_lst);
 	
-	add_cmd(&cmd_lst, B, 4);
-	print_cmd(cmd_lst);
+	while (cmd_lst)
+	{
+		cmd = get_cmd(&cmd_lst);
+		// printf(" |%i %3i|\n",cmd[0], cmd[1]);
+		if (cmd[0] == A)
+		{
+			divide_lst_a(lst_a, lst_b, cmd, &cmd_lst);
+			// printh_lst(*lst_a, 'a');
+			// printh_lst(*lst_b, 'b');
+			// print_cmd(cmd_lst);
+		}
+		else if (cmd[0] == B)
+		{
+			divide_lst_b(lst_a, lst_b, cmd, &cmd_lst);
+			// printh_lst(*lst_a, 'a');
+			// printh_lst(*lst_b, 'b');
+			// print_cmd(cmd_lst);
+		}
+		else
+		{
+			return_numbers(lst_a, lst_b, cmd);
+			// printh_lst(*lst_a, 'a');
+			// printh_lst(*lst_b, 'b');
+			// print_cmd(cmd_lst);
+		}
+		del_int(cmd); // FREE COMMAND IN THE END OF IT
+	}
 	
-	cmd = read_cmd(cmd_lst);
-	printf(" |%i %2i|\n",cmd[0], cmd[1]);
-	print_cmd(cmd_lst);
+	// add_cmd(&cmd_lst, B, 4);
+	// print_cmd(cmd_lst);
 	
-	cmd = get_cmd(&cmd_lst);
-	printf(" |%i %2i|\n",cmd[0], cmd[1]);
-	print_cmd(cmd_lst);
-	del_int(cmd); // FREE COMMAND IN THE END OF IT
+	// cmd = read_cmd(cmd_lst);
+	// printf(" |%i %2i|\n",cmd[0], cmd[1]);
+	// print_cmd(cmd_lst);
+	
+	// cmd = get_cmd(&cmd_lst);
+	// printf(" |%i %2i|\n",cmd[0], cmd[1]);
+	// print_cmd(cmd_lst);
+	// del_int(cmd); // FREE COMMAND IN THE END OF IT
 
-	cmd = get_cmd(&cmd_lst);
-	printf(" |%i %2i|\n",cmd[0], cmd[1]);
-	print_cmd(cmd_lst);
-	del_int(cmd); // FREE COMMAND IN THE END OF IT
+	// cmd = get_cmd(&cmd_lst);
+	// printf(" |%i %2i|\n",cmd[0], cmd[1]);
+	// print_cmd(cmd_lst);
+	// del_int(cmd); // FREE COMMAND IN THE END OF IT
 
 	ft_lstclear(&cmd_lst, del_int);
 }

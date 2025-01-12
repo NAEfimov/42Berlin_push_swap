@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:50:41 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/10 16:01:33 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/12 22:47:57 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	init_m(t_list *lst, int size, int mm[4])
 
 // Get median value of first <size> nodes in list <lst>
 // mm[4](min_max[4]): <curr_min> <next min> <curr_max> <next_max> 
-int	get_mvalue(t_list *lst, int size)
+int	get_mvalue(t_list *lst, int *cmd)
 {
 	t_list	*node;
 	int		i;
@@ -82,12 +82,12 @@ int	get_mvalue(t_list *lst, int size)
 	mm[1] = INT_MIN;
 	mm[3] = INT_MAX;
 	i = -1;
-	while (++i <= size / 2)
+	while (++i <= cmd[1] / 2)
 	{
 		node = lst;
 		j = -1;
-		init_m(lst, size, mm);
-		while (++j < size)
+		init_m(lst, cmd[1], mm);
+		while (++j < cmd[1])
 		{
 			if (get_int(node) > mm[1] && get_int(node) < mm[0])
 				mm[0] = get_int(node);
@@ -98,5 +98,8 @@ int	get_mvalue(t_list *lst, int size)
 		mm[1] = mm[0];
 		mm[3] = mm[2];
 	}
-	return (mm[0]);
+	if (cmd[0] == A)
+		return (mm[0]);
+	else
+		return (mm[1]);
 }
