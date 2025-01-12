@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/10 16:01:47 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/12 14:05:16 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,36 @@ void	sort_triad_up(t_list **lst, char c)
 			}
 		}
 	}
+}
+
+void make_sort(t_list **lst_a, t_list **lst_b, int len)
+{
+	t_list	*cmd_lst;
+	int		*cmd;
+
+	cmd_lst = NULL;
+	init_cmd(&cmd_lst, len);
+	
+	printh_lst(*lst_a, 'a');
+	printh_lst(*lst_b, 'b');
+	print_cmd(cmd_lst);
+	
+	add_cmd(&cmd_lst, B, 4);
+	print_cmd(cmd_lst);
+	
+	cmd = read_cmd(cmd_lst);
+	printf(" |%i %2i|\n",cmd[0], cmd[1]);
+	print_cmd(cmd_lst);
+	
+	cmd = get_cmd(&cmd_lst);
+	printf(" |%i %2i|\n",cmd[0], cmd[1]);
+	print_cmd(cmd_lst);
+	del_int(cmd); // FREE COMMAND IN THE END OF IT
+
+	cmd = get_cmd(&cmd_lst);
+	printf(" |%i %2i|\n",cmd[0], cmd[1]);
+	print_cmd(cmd_lst);
+	del_int(cmd); // FREE COMMAND IN THE END OF IT
+
+	ft_lstclear(&cmd_lst, del_int);
 }

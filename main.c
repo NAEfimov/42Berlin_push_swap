@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/10 16:14:47 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/12 13:25:26 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ int	main(int argc, char *argv[])
 		return (print_error());
 	else if (len == 0)
 		return (0);
-	// else
-	// 	make_sort();
-	printh_lst(lst_a, 'a');
-	printh_lst(lst_b, 'b');
-	p_lst(&lst_a, &lst_b, 'b');
-	p_lst(&lst_a, &lst_b, 'b');
-	printh_lst(lst_a, 'a');
-	printh_lst(lst_b, 'b');
-	p_lst(&lst_b, &lst_a, 'a');
-	printh_lst(lst_a, 'a');
-	printh_lst(lst_b, 'b');
+	else
+		make_sort(&lst_a, &lst_b, len);
+	// printh_lst(lst_a, 'a');
+	// printh_lst(lst_b, 'b');
+	// p_lst(&lst_a, &lst_b, 'b');
+	// p_lst(&lst_a, &lst_b, 'b');
+	// printh_lst(lst_a, 'a');
+	// printh_lst(lst_b, 'b');
+	// p_lst(&lst_b, &lst_a, 'a');
+	// printh_lst(lst_a, 'a');
+	// printh_lst(lst_b, 'b');
 	// sort_triad_up(&lst_a, 'a');
 	// printh_lst(lst_a, 'a');
 	ft_lstclear(&lst_a, del_int);

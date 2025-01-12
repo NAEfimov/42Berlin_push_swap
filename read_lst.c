@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:31:16 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/08 18:02:56 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/12 13:57:23 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ int	*read_num(char *str)
 void	del_int(void *content)
 {
 	free(content);
+}
+
+// Function to free list node content
+void	del_none(void *content)
+{
+	if (content)
+		return ;
 }
 
 void	check_dup(int **num, t_list *lst)

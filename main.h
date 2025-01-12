@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/10 16:00:21 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/12 13:58:45 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@
 # include <stdio.h>
 # include "libft.h"
 
+# define A 0
+# define B 1
+# define AR 2
+# define BR 3
+
+# define CMD_SIZE 2
+
 // Read and check input args
 int		*read_num(char *str);
 void	del_int(void *content);
+void	del_none(void *content);
 void	check_dup(int **num, t_list *lst);
 int		read_args(int argc, char *argv[], t_list **lst);
 
@@ -29,6 +37,7 @@ int		read_args(int argc, char *argv[], t_list **lst);
 int		print_error(void);
 void	printv_lst(t_list *lst);
 void	printh_lst(t_list *lst, char c);
+void 	print_cmd(t_list *lst);
 
 // List utils
 int		get_int(t_list *lst);
@@ -45,7 +54,15 @@ int		lst_is_sorted_down(t_list *lst, int n);
 int		lst_is_sorted_up(t_list *lst, int n);
 int		get_mvalue(t_list *lst, int size);
 
-//Sort list
+// Sort list
+void 	make_sort(t_list **lst_a, t_list **lst_b, int len);
 void	sort_triad_down(t_list **lst, char c);
+void	sort_triad_up(t_list **lst, char c);
+
+// Commands list
+int		add_cmd(t_list **cmd_lst, int lst, int num);
+int		*read_cmd(t_list *cmd_lst);
+int		*get_cmd(t_list **cmd_lst);
+int		init_cmd(t_list **cmd_lst, int len);
 
 #endif
