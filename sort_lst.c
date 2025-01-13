@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/12 23:38:49 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/13 12:59:07 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,22 @@ void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 	int	m;
 	int	to_move;
 	int	r_count;
+	int	rr_back;
 
 	while (cmd[1] > 3)
 	{
 		to_move = cmd[1] / 2;
 		m = get_mvalue(*lst_a, cmd);
+		// printh_lst(*lst_a, 'a');				// PRINT
+		// printh_lst(*lst_b, 'b');				// PRINT
+		// printf("m: %i\n", m);					// PRINT
+		// add_cmd_check(cmd_lst, BR, to_move);
 		add_cmd(cmd_lst, BR, to_move);
 		add_cmd(cmd_lst, B, to_move);
+		// print_cmd(*cmd_lst);						// PRINT
+		rr_back = 1;
+		if (cmd[1] == ft_lstsize(*lst_a))
+			rr_back = 0;
 		r_count = 0;
 		while (to_move > 0)
 		{
@@ -104,7 +113,7 @@ void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 				r_count++;
 			}
 		}
-		while (r_count-- > 0)
+		while (rr_back && (r_count-- > 0))
 			rr_lst(lst_a, 'a');
 	}
 	sort_triad_down(lst_a, 'a');
@@ -120,12 +129,17 @@ void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 	{
 		to_move = cmd[1] / 2;
 		m = get_mvalue(*lst_b, cmd);
+		// printh_lst(*lst_a, 'a');				// PRINT
+		// printh_lst(*lst_b, 'b');				// PRINT
+		// printf("m: %i\n", m);					// PRINT
+		// add_cmd_check(cmd_lst, AR, to_move);
 		add_cmd(cmd_lst, AR, to_move);
 		add_cmd(cmd_lst, A, to_move);
+		// print_cmd(*cmd_lst);						// PRINT
 		r_count = 0;
 		while (to_move > 0)
 		{
-			if (get_int(*lst_b) >= m)
+			if (get_int(*lst_b) > m)
 			{
 				p_lst(lst_b, lst_a, 'a');
 				to_move--;
@@ -141,8 +155,8 @@ void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 			rr_lst(lst_b, 'b');
 	}
 	sort_triad_up(lst_b, 'b');
-	// printh_lst(*lst_a, 'a');
-	// printh_lst(*lst_b, 'b');
+	// printh_lst(*lst_a, 'a');				// PRINT
+	// printh_lst(*lst_b, 'b');				// PRINT
 }
 
 void	make_sort(t_list **lst_a, t_list **lst_b, int len)
@@ -153,54 +167,37 @@ void	make_sort(t_list **lst_a, t_list **lst_b, int len)
 	cmd_lst = NULL;
 	init_cmd(&cmd_lst, len);
 	
-	// printh_lst(*lst_a, 'a');
-	// printh_lst(*lst_b, 'b');
-	// print_cmd(cmd_lst);
+	// printh_lst(*lst_a, 'a');				// PRINT
+	// printh_lst(*lst_b, 'b');				// PRINT
+	// print_cmd(cmd_lst);						// PRINT
 	
 	while (cmd_lst)
 	{
 		cmd = get_cmd(&cmd_lst);
-		// printf(" |%i %3i|\n",cmd[0], cmd[1]);
+		// printf(" |%i %3i|\n",cmd[0], cmd[1]);					//PRINT
 		if (cmd[0] == A)
 		{
 			divide_lst_a(lst_a, lst_b, cmd, &cmd_lst);
-			// printh_lst(*lst_a, 'a');
-			// printh_lst(*lst_b, 'b');
-			// print_cmd(cmd_lst);
+			// printh_lst(*lst_a, 'a');				// PRINT
+			// printh_lst(*lst_b, 'b');				// PRINT
+			// print_cmd(cmd_lst);						// PRINT
 		}
 		else if (cmd[0] == B)
 		{
 			divide_lst_b(lst_a, lst_b, cmd, &cmd_lst);
-			// printh_lst(*lst_a, 'a');
-			// printh_lst(*lst_b, 'b');
-			// print_cmd(cmd_lst);
+			// printh_lst(*lst_a, 'a');				// PRINT
+			// printh_lst(*lst_b, 'b');				// PRINT
+			// print_cmd(cmd_lst);						// PRINT
 		}
 		else
 		{
 			return_numbers(lst_a, lst_b, cmd);
-			// printh_lst(*lst_a, 'a');
-			// printh_lst(*lst_b, 'b');
-			// print_cmd(cmd_lst);
+			// printh_lst(*lst_a, 'a');				// PRINT
+			// printh_lst(*lst_b, 'b');				// PRINT
+			// print_cmd(cmd_lst);						// PRINT
 		}
 		del_int(cmd); // FREE COMMAND IN THE END OF IT
 	}
 	
-	// add_cmd(&cmd_lst, B, 4);
-	// print_cmd(cmd_lst);
-	
-	// cmd = read_cmd(cmd_lst);
-	// printf(" |%i %2i|\n",cmd[0], cmd[1]);
-	// print_cmd(cmd_lst);
-	
-	// cmd = get_cmd(&cmd_lst);
-	// printf(" |%i %2i|\n",cmd[0], cmd[1]);
-	// print_cmd(cmd_lst);
-	// del_int(cmd); // FREE COMMAND IN THE END OF IT
-
-	// cmd = get_cmd(&cmd_lst);
-	// printf(" |%i %2i|\n",cmd[0], cmd[1]);
-	// print_cmd(cmd_lst);
-	// del_int(cmd); // FREE COMMAND IN THE END OF IT
-
 	ft_lstclear(&cmd_lst, del_int);
 }

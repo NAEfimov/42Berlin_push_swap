@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:40:57 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/12 14:10:26 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/13 12:43:28 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,41 @@
 
 // Add a command to the list of commands
 // Return <0> if ok, <-1> if malloc error
+int	add_cmd_check(t_list **cmd_lst, int lst, int num)
+{
+	int		*cmd_pr;
+	int		*cmd;
+	t_list	*node;
+
+	
+	cmd_pr = read_cmd(*cmd_lst);
+	if (cmd_pr && cmd_pr[0] >= AR)
+	{
+		if (cmd_pr[0] != lst)
+			cmd_pr[1] -= num;
+		else
+			cmd_pr[1] += num;		
+	}
+	else
+	{
+		cmd = (int *) malloc(sizeof(int) * CMD_SIZE);
+		if (cmd == NULL)
+			return (-1);	
+		cmd[0] = lst;
+		cmd[1] = num;
+		node = ft_lstnew(cmd);
+		if (node == NULL)
+			return (-2);
+		ft_lstadd_front(cmd_lst, node);
+	}
+	return (0);
+}
+
 int	add_cmd(t_list **cmd_lst, int lst, int num)
 {
 	int		*cmd;
 	t_list	*node;
-	
+
 	cmd = (int *) malloc(sizeof(int) * CMD_SIZE);
 	if (cmd == NULL)
 		return (-1);

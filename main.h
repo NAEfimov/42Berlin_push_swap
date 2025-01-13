@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/12 23:07:16 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/13 12:09:06 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
 
 // Commands list
 int		add_cmd(t_list **cmd_lst, int lst, int num);
+int		add_cmd_check(t_list **cmd_lst, int lst, int num);
 int		*read_cmd(t_list *cmd_lst);
 int		*get_cmd(t_list **cmd_lst);
 int		init_cmd(t_list **cmd_lst, int len);

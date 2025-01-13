@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:50:41 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/12 22:47:57 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/13 10:44:01 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,12 @@ int	get_mvalue(t_list *lst, int *cmd)
 				mm[2] = get_int(node);
 			node = node->next;
 		}
+		// printf("i:%i) m[0]: %i, m[2] %i\n", i, mm[0], mm[2]);
 		mm[1] = mm[0];
 		mm[3] = mm[2];
 	}
 	if (cmd[0] == A)
 		return (mm[0]);
 	else
-		return (mm[1]);
+	 	return (mm[2]);
 }
