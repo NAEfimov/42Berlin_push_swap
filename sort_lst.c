@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/13 15:01:52 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:21:43 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,18 @@ void	return_numbers(t_list **lst_a, t_list **lst_b, int *cmd)
 			p_lst(lst_b, lst_a, 'a');
 }
 
+// sort_pair(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
+// {
+	
+// }
+
 void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 {
 	int	m;
 	int	to_move;
 	int	r_count;
 	int	rr_back;
+	// int	*cmd_n;
 
 	while (cmd[1] > 3)
 	{
@@ -115,6 +121,9 @@ void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 		while (rr_back && (r_count-- > 0))
 			rr_lst(lst_a, 'a');
 	}
+	// cmd_n = read_cmd(*cmd_lst);
+	// if (cmd_n && cmd[0] != cmd_n[0] && cmd_n[0] < AR && cmd_n[1] <= 3 )
+	// 	sort_pair(lst_a, lst_b, cmd[1], cmd_n[1]);
 	sort_triad_down(lst_a, 'a');
 }
 
