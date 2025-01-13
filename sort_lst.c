@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/13 18:21:43 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/13 20:01:03 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,131 @@ void	return_numbers(t_list **lst_a, t_list **lst_b, int *cmd)
 			p_lst(lst_b, lst_a, 'a');
 }
 
-// sort_pair(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
-// {
+int		calc_opr_a(t_list *a, int len)
+{
+	int		opr;
+	t_list	*b;
+	t_list	*c;
 	
-// }
+	opr = 0;
+	if (len > 1)
+	{
+		b = a->next;
+		if (get_int(a) > get_int(b))
+			opr = 1;
+	}
+	if (len > 2)
+	{
+		c = b->next;
+		if (get_int(b) > get_int(c) || (get_int(b) < get_int(c) && get_int(a) > get_int(b)))
+			opr +=10;
+		if (get_int(a) > get_int(c) && get_int(b) > get_int(c))
+			opr +=100;
+	}
+	return (opr);
+}
+
+int		calc_opr_b(t_list *a, int len)
+{
+	int		opr;
+	t_list	*b;
+	t_list	*c;
+	
+	opr = 0;
+	if (len > 1)
+	{
+		b = a->next;
+		if (get_int(a) < get_int(b))
+			opr = 1;
+	}
+	if (len > 2)
+	{
+		c = b->next;
+		if (get_int(b) < get_int(c) || (get_int(b) > get_int(c) && get_int(a) < get_int(b)))
+			opr +=10;
+		if (get_int(a) < get_int(c) && get_int(b) < get_int(c))
+			opr +=100;
+	}
+	return (opr);
+}
+
+/* int		calc_opr_a(t_list *lst, int len)
+{
+	int		opr;
+	t_list	*a;
+	t_list	*b;
+	
+	opr = 0;
+	if (len > 1)
+	{
+		a = lst->next;
+		if (read_num(lst) > read_num(a))
+			opr = 1;
+	}
+	if (len > 2)
+	{
+		b = a->next;
+		if (read_num(a) > read_num(b) || (read_num(a) < read_num(b) && read_num(lst) > read_num(b)))
+			opr +=10;
+		if (read_num(lst) > read_num(b) && read_num(a) > read_num(b))
+			opr +=100;
+	}
+	return (opr);
+} */
+
+void	sort_pair(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
+{
+	int	opr_a;
+	int opr_b;
+
+	opr_a = calc_opr_a(*lst_a, len_a);
+	opr_b = calc_opr_b(*lst_b, len_b);
+	if (opr_a % 10 == 1)
+	{
+		if (opr_b % 10 == 1)
+			ss_lst(lst_a, lst_b);
+		else
+			s_lst(lst_a, 'a');
+	}
+	else if (opr_b % 10 == 1)
+		s_lst(lst_b, 'b');
+
+	opr_a = opr_a / 10;
+	opr_b = opr_b / 10;
+	if (opr_a % 10 == 1)
+	{
+		if (opr_b % 10 == 1)
+		{
+			r_lst_ab(lst_a, lst_b);
+			ss_lst(lst_a, lst_b);
+			rr_lst_ab(lst_a, lst_b);
+		}
+		else
+		{
+			r_lst(lst_a, 'a');
+			s_lst(lst_a, 'a');
+			rr_lst(lst_a, 'a');
+		}
+	}
+	else if (opr_b % 10 == 1)
+	{	
+		r_lst(lst_b, 'b');
+		s_lst(lst_b, 'b');
+		rr_lst(lst_b, 'b');
+	}
+
+	opr_a = opr_a / 10;
+	opr_b = opr_b / 10;	
+	if (opr_a % 10 == 1)
+	{
+		if (opr_b % 10 == 1)
+			ss_lst(lst_a, lst_b);
+		else
+			s_lst(lst_a, 'a');
+	}
+	else if (opr_b % 10 == 1)
+		s_lst(lst_b, 'b');
+}
 
 void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 {
@@ -88,7 +209,7 @@ void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 	int	to_move;
 	int	r_count;
 	int	rr_back;
-	// int	*cmd_n;
+	int	*cmd_n;
 
 	while (cmd[1] > 3)
 	{
@@ -121,9 +242,10 @@ void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 		while (rr_back && (r_count-- > 0))
 			rr_lst(lst_a, 'a');
 	}
-	// cmd_n = read_cmd(*cmd_lst);
-	// if (cmd_n && cmd[0] != cmd_n[0] && cmd_n[0] < AR && cmd_n[1] <= 3 )
-	// 	sort_pair(lst_a, lst_b, cmd[1], cmd_n[1]);
+	cmd_n = read_cmd(*cmd_lst);
+	// // printf("cmd[0]: %i | cmd_n[0]: %i\n", cmd[0], cmd_n[0]);
+	if (cmd_n && cmd[0] != cmd_n[0] && cmd_n[0] < AR)
+		sort_pair(lst_a, lst_b, cmd[1], cmd_n[1]);
 	sort_triad_down(lst_a, 'a');
 }
 
@@ -133,6 +255,7 @@ void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 	int	to_move;
 	int	r_count;
 	int	rr_back;
+	int	*cmd_n;
 
 	while (cmd[1] > 3)
 	{
@@ -165,6 +288,10 @@ void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 		while (rr_back && (r_count-- > 0))
 			rr_lst(lst_b, 'b');
 	}
+	cmd_n = read_cmd(*cmd_lst);
+	// // printf("cmd[0]: %i | cmd_n[0]: %i\n", cmd[0], cmd_n[0]);
+	if (cmd_n && cmd[0] != cmd_n[0] && cmd_n[0] < AR)
+		sort_pair(lst_a, lst_b, cmd_n[1], cmd[1]);
 	sort_triad_up(lst_b, 'b');
 	// printh_lst(*lst_a, 'a');				// PRINT
 	// printh_lst(*lst_b, 'b');				// PRINT

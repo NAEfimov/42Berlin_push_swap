@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/13 12:09:06 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:26:00 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ int		get_intn(t_list *lst, unsigned int n);
 
 // Sort operations
 void	r_lst(t_list **lst, char c);
+void	r_lst_ab(t_list **lst_a, t_list **lst_b);
 void	rr_lst(t_list **lst, char c);
+void	rr_lst_ab(t_list **lst_a, t_list **lst_b);
 void	s_lst(t_list **lst, char c);
+void	ss_lst(t_list **lst_a, t_list **lst_b);
 void	p_lst(t_list **lst_a, t_list **lst_b, char c);
 
 // Sort utils

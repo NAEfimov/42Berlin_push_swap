@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:48:51 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/13 18:25:13 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:08:51 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ void	r_lst(t_list **lst, char c)
 		first->next = NULL;
 		*lst = second;
 	}
-	write(1, "r", 1);
 	if (c != ' ')
+	{
+		write(1, "r", 1);
 		write(1, &c, 1);
+	}
 	if (c != 'r')
 		write(1, "\n", 1);
 }
@@ -56,9 +58,11 @@ void	rr_lst(t_list **lst, char c)
 		pre_last->next = NULL;
 		ft_lstadd_front(lst, last);
 	}
-	write(1, "rr", 2);
 	if (c != ' ')
+	{	
+		write(1, "rr", 2);
 		write(1, &c, 1);
+	}
 	if (c != 'r')
 		write(1, "\n", 1);
 }
@@ -83,9 +87,19 @@ void	s_lst(t_list **lst, char c)
 	second->next = first;
 	first->next = third;
 	*lst = second;
-	write(1, "s", 1);
-	write(1, &c, 1);
-	write(1, "\n", 1);
+	if (c != ' ')
+	{
+		write(1, "s", 1);
+		write(1, &c, 1);
+	}
+	if (c != 's')
+		write(1, "\n", 1);
+}
+
+void	ss_lst(t_list **lst_a, t_list **lst_b)
+{
+	s_lst(lst_a, 's');
+	s_lst(lst_b, ' ');
 }
 
 void	p_lst(t_list **lst_a, t_list **lst_b, char c)
