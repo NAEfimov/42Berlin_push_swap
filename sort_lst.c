@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/13 12:59:07 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/13 15:01:52 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,7 @@ void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 		// printh_lst(*lst_a, 'a');				// PRINT
 		// printh_lst(*lst_b, 'b');				// PRINT
 		// printf("m: %i\n", m);					// PRINT
-		// add_cmd_check(cmd_lst, BR, to_move);
-		add_cmd(cmd_lst, BR, to_move);
+		add_cmd_check(cmd_lst, BR, to_move);
 		add_cmd(cmd_lst, B, to_move);
 		// print_cmd(*cmd_lst);						// PRINT
 		rr_back = 1;
@@ -124,6 +123,7 @@ void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 	int	m;
 	int	to_move;
 	int	r_count;
+	int	rr_back;
 
 	while (cmd[1] > 3)
 	{
@@ -132,10 +132,12 @@ void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 		// printh_lst(*lst_a, 'a');				// PRINT
 		// printh_lst(*lst_b, 'b');				// PRINT
 		// printf("m: %i\n", m);					// PRINT
-		// add_cmd_check(cmd_lst, AR, to_move);
-		add_cmd(cmd_lst, AR, to_move);
+		add_cmd_check(cmd_lst, AR, to_move);
 		add_cmd(cmd_lst, A, to_move);
 		// print_cmd(*cmd_lst);						// PRINT
+		rr_back = 1;
+		if (cmd[1] == ft_lstsize(*lst_b))
+			rr_back = 0;
 		r_count = 0;
 		while (to_move > 0)
 		{
@@ -151,7 +153,7 @@ void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 				r_count++;
 			}
 		}
-		while (r_count-- > 0)
+		while (rr_back && (r_count-- > 0))
 			rr_lst(lst_b, 'b');
 	}
 	sort_triad_up(lst_b, 'b');
