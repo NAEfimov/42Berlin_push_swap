@@ -33,7 +33,8 @@ SRCS		:=		\
 	sort_opr.c		\
 	sort_utl.c		\
 	sort_lst.c		\
-	cmd_lst.c
+	cmd_lst.c		\
+	divide_lst.c
 
 OBJS		:= $(SRCS:%.c=%.o)
 DEPS		:= $(OBJS:.o=.d)

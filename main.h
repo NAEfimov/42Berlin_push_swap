@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/13 19:26:00 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/14 18:58:12 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,26 @@ void	rr_lst(t_list **lst, char c);
 void	rr_lst_ab(t_list **lst_a, t_list **lst_b);
 void	s_lst(t_list **lst, char c);
 void	ss_lst(t_list **lst_a, t_list **lst_b);
+void	s_lst_pair(t_list **lst_a, t_list **lst_b);
 void	p_lst(t_list **lst_a, t_list **lst_b, char c);
 
 // Sort utils
 int		lst_is_sorted_down(t_list *lst, int n);
 int		lst_is_sorted_up(t_list *lst, int n);
-int		get_mvalue(t_list *lst, int *cmd);
+int		get_median_value(t_list *lst, int *cmd);
+int		get_n_value(t_list *lst, int *cmd, int n);
 
 // Sort list
 void 	make_sort(t_list **lst_a, t_list **lst_b, int len);
 void	sort_triad_down(t_list **lst, char c);
 void	sort_triad_up(t_list **lst, char c);
+void	sort_pair_a(t_list **lst_a, t_list **lst_b, int len_a, int len_b);
+void	sort_pair_b(t_list **lst_a, t_list **lst_b, int len_a, int len_b);
 void	return_numbers(t_list **lst_a, t_list **lst_b, int *cmd);
 void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
 void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
+void	divide_lst_a_pair(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
+void	divide_lst_b_pair(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
 
 // Commands list
 int		add_cmd(t_list **cmd_lst, int lst, int num);

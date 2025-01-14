@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:48:51 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/13 19:08:51 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/14 18:21:30 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,31 @@ void	ss_lst(t_list **lst_a, t_list **lst_b)
 {
 	s_lst(lst_a, 's');
 	s_lst(lst_b, ' ');
+}
+
+void	s_lst_pair(t_list **lst_a, t_list **lst_b)
+{
+	int	a;
+	int	b;
+
+	a = 0;
+	b = 0;
+	if (*lst_a && (*lst_a)->next)
+	{
+		if (get_int(*lst_a) > get_int((*lst_a)->next))
+			a = 1;	
+	}
+	if (*lst_b && (*lst_b)->next)
+	{
+		if (get_int(*lst_b) < get_int((*lst_b)->next))
+			b = 1;	
+	}
+	if (a && b)
+		ss_lst(lst_a, lst_b);
+	else if (a)
+		s_lst(lst_a, 'a');
+	else if (b)
+		s_lst(lst_b, 'b');		
 }
 
 void	p_lst(t_list **lst_a, t_list **lst_b, char c)
