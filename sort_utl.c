@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:50:41 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/14 18:59:13 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/15 10:19:04 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	get_median_value(t_list *lst, int *cmd)
 	 	return (mm[2]);
 }
 
-int	get_n_value(t_list *lst, int *cmd, int n)
+int	get_n_minmax_value(t_list *lst, int *cmd, int n)
 {
 	t_list	*node;
 	int		i;

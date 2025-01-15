@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/14 19:47:34 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/15 10:17:32 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,40 +231,16 @@ void	make_sort(t_list **lst_a, t_list **lst_b, int len)
 
 	cmd_lst = NULL;
 	init_cmd(&cmd_lst, len);
-	
-	// printh_lst(*lst_a, 'a');				// PRINT
-	// printh_lst(*lst_b, 'b');				// PRINT
-	// print_cmd(cmd_lst);						// PRINT
-	
 	while (cmd_lst)
 	{
 		cmd = get_cmd(&cmd_lst);
-		// printf(" |%i %3i|\n",cmd[0], cmd[1]);					//PRINT
 		if (cmd[0] == A)
-		{
-			divide_lst_a_pair(lst_a, lst_b, cmd, &cmd_lst);
-			// divide_lst_a(lst_a, lst_b, cmd, &cmd_lst);
-			// printh_lst(*lst_a, 'a');				// PRINT
-			// printh_lst(*lst_b, 'b');				// PRINT
-			// print_cmd(cmd_lst);						// PRINT
-		}
+			divide_lst_a(lst_a, lst_b, cmd, &cmd_lst);
 		else if (cmd[0] == B)
-		{
-			divide_lst_b_pair(lst_a, lst_b, cmd, &cmd_lst);
-			// divide_lst_b(lst_a, lst_b, cmd, &cmd_lst);
-			// printh_lst(*lst_a, 'a');				// PRINT
-			// printh_lst(*lst_b, 'b');				// PRINT
-			// print_cmd(cmd_lst);						// PRINT
-		}
+			divide_lst_b(lst_a, lst_b, cmd, &cmd_lst);
 		else
-		{
 			return_numbers(lst_a, lst_b, cmd);
-			// printh_lst(*lst_a, 'a');				// PRINT
-			// printh_lst(*lst_b, 'b');				// PRINT
-			// print_cmd(cmd_lst);						// PRINT
-		}
 		del_int(cmd); // FREE COMMAND IN THE END OF IT
 	}
-	
 	ft_lstclear(&cmd_lst, del_int);
 }
