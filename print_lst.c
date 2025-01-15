@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:08 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/13 10:21:50 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/14 20:00:34 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	printh_lst(t_list *lst, char c)
 	printf("%c| ", c);
 	while (lst != NULL)
 	{
-		printf("%3i ", *(int *)lst->content);
+		printf("%2i ", *(int *)lst->content);
 		lst = lst->next;
 	}
 	printf("\n");
