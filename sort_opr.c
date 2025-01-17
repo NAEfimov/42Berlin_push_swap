@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:48:51 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/14 18:21:30 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 17:00:08 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,28 @@ void	r_lst(t_list **lst, char c)
 		write(1, "\n", 1);
 }
 
-void	r_lst_ab(t_list **lst_a, t_list **lst_b)
+void	r_lst_ab(t_list *lst[3])
 {
-	r_lst(lst_a, 'r');
-	r_lst(lst_b, ' ');
+	t_list	*first;
+	t_list	*second;
+
+	first = lst[A];
+	if (first->next)
+	{
+		second = first->next;
+		ft_lstadd_back(&lst[A], first);
+		first->next = NULL;
+		lst[A] = second;
+	}
+	first = lst[B];
+	if (first->next)
+	{
+		second = first->next;
+		ft_lstadd_back(&lst[B], first);
+		first->next = NULL;
+		lst[B] = second;
+	}
+	write(1, "rr\n", 3);
 }
 
 void	rr_lst(t_list **lst, char c)

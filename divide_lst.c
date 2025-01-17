@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:46:33 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 16:50:00 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 17:12:39 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	divide_lst_a(t_list *lst[3])
 		// printh_lst(*lst_a, 'a');				// PRINT
 		// printh_lst(*lst_b, 'b');				// PRINT
 	
-	sort_pair_a(&lst[A], &lst[B], cmd[1], cmd[1]);
+	sort_pair_a(lst, cmd[1], cmd[1]);
 	
 		// printh_lst(*lst_a, 'a');				// PRINT
 		// printh_lst(*lst_b, 'b');				// PRINT
@@ -112,7 +112,7 @@ void	divide_lst_b(t_list *lst[3])
 		// printh_lst(*lst_a, 'a');				// PRINT
 		// printh_lst(*lst_b, 'b');				// PRINT
 	
-	sort_pair_b(&lst[A], &lst[B], cmd[1], cmd[1]);
+	sort_pair_b(lst, cmd[1], cmd[1]);
 
 		// printh_lst(*lst_a, 'a');				// PRINT
 		// printh_lst(*lst_b, 'b');				// PRINT
@@ -193,7 +193,7 @@ void	divide_lst_a_init(t_list *lst[3], int to_btm)
 			{
 				if (rr_back > 0)
 				{
-					r_lst_ab(&lst[A], &lst[B]);
+					r_lst_ab(lst);
 					rr_back--;
 				}
 				else
@@ -218,7 +218,7 @@ void	divide_lst_a_init(t_list *lst[3], int to_btm)
 			// printh_lst(*lst_a, 'a');				// PRINT
 			// printh_lst(*lst_b, 'b');				// PRINT
 	
-		sort_pair_a(&lst[A], &lst[B], cmd[1], cmd[1]);
+		sort_pair_a(lst, cmd[1], cmd[1]);
 	
 			// printh_lst(*lst_a, 'a');				// PRINT
 			// printh_lst(*lst_b, 'b');				// PRINT

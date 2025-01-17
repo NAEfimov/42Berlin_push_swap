@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 16:43:22 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 17:11:24 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,26 +131,26 @@ int		calc_opr_b(t_list *a, int len)
 }
 
 // For A
-void	sort_pair_a(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
+void	sort_pair_a(t_list *lst[3], int len_a, int len_b)
 {
 	int	opr_a;
 	int opr_b;
 
-	if (ft_lstsize(*lst_a) < len_a)
-		len_a = ft_lstsize(*lst_a);
-	if (ft_lstsize(*lst_b) < len_b)
-		len_b = ft_lstsize(*lst_b);
-	opr_a = calc_opr_a(*lst_a, len_a);
-	opr_b = calc_opr_b(*lst_b, len_b);
+	if (ft_lstsize(lst[A]) < len_a)
+		len_a = ft_lstsize(lst[A]);
+	if (ft_lstsize(lst[B]) < len_b)
+		len_b = ft_lstsize(lst[B]);
+	opr_a = calc_opr_a(lst[A], len_a);
+	opr_b = calc_opr_b(lst[B], len_b);
 	// printh_lst(*lst_a, 'a');								//PRINT
 	// printh_lst(*lst_b, 'b');								//PRINT
 	// printf("opr_a: %i | opr_b: %i\n", opr_a, opr_b);	//PRINT
 	if (opr_a % 10 == 1)
 	{
 		if (opr_b % 10 == 1)
-			ss_lst(lst_a, lst_b);
+			ss_lst(&lst[A], &lst[B]);
 		else
-			s_lst(lst_a, 'a');
+			s_lst(&lst[A], 'a');
 	}
 	opr_a = opr_a / 10;
 	opr_b = opr_b / 10;
@@ -158,15 +158,15 @@ void	sort_pair_a(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
 	{
 		if (opr_b % 10 == 1)
 		{
-			r_lst_ab(lst_a, lst_b);
-			ss_lst(lst_a, lst_b);
-			rr_lst_ab(lst_a, lst_b);
+			r_lst_ab(lst);
+			ss_lst(&lst[A], &lst[B]);
+			rr_lst_ab(&lst[A], &lst[B]);
 		}
 		else
 		{
-			r_lst(lst_a, 'a');
-			s_lst(lst_a, 'a');
-			rr_lst(lst_a, 'a');
+			r_lst(&lst[A], 'a');
+			s_lst(&lst[A], 'a');
+			rr_lst(&lst[A], 'a');
 		}
 	}
 	opr_a = opr_a / 10;
@@ -174,32 +174,32 @@ void	sort_pair_a(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
 	if (opr_a % 10 == 1)
 	{
 		if (opr_b % 10 == 1)
-			ss_lst(lst_a, lst_b);
+			ss_lst(&lst[A], &lst[B]);
 		else
-			s_lst(lst_a, 'a');
+			s_lst(&lst[A], 'a');
 	}
 }
 
-void	sort_pair_b(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
+void	sort_pair_b(t_list *lst[3], int len_a, int len_b)
 {
 	int	opr_a;
 	int opr_b;
 
-	if (ft_lstsize(*lst_a) < len_a)
-		len_a = ft_lstsize(*lst_a);
-	if (ft_lstsize(*lst_b) < len_b)
-		len_b = ft_lstsize(*lst_b);
-	opr_a = calc_opr_a(*lst_a, len_a);
-	opr_b = calc_opr_b(*lst_b, len_b);
+	if (ft_lstsize(lst[A]) < len_a)
+		len_a = ft_lstsize(lst[A]);
+	if (ft_lstsize(lst[B]) < len_b)
+		len_b = ft_lstsize(lst[B]);
+	opr_a = calc_opr_a(lst[A], len_a);
+	opr_b = calc_opr_b(lst[B], len_b);
 	// printh_lst(*lst_a, 'a');								//PRINT
 	// printh_lst(*lst_b, 'b');								//PRINT
 	// printf("opr_a: %i | opr_b: %i\n", opr_a, opr_b);	//PRINT
 	if (opr_b % 10 == 1)
 	{
 		if (opr_a % 10 == 1)
-			ss_lst(lst_a, lst_b);
+			ss_lst(&lst[A], &lst[B]);
 		else
-			s_lst(lst_b, 'b');
+			s_lst(&lst[B], 'b');
 	}
 	opr_a = opr_a / 10;
 	opr_b = opr_b / 10;
@@ -207,15 +207,15 @@ void	sort_pair_b(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
 	{
 		if (opr_a % 10 == 1)
 		{
-			r_lst_ab(lst_a, lst_b);
-			ss_lst(lst_a, lst_b);
-			rr_lst_ab(lst_a, lst_b);
+			r_lst_ab(lst);
+			ss_lst(&lst[A], &lst[B]);
+			rr_lst_ab(&lst[A], &lst[B]);
 		}
 		else
 		{
-			r_lst(lst_b, 'b');
-			s_lst(lst_b, 'b');
-			rr_lst(lst_b, 'b');
+			r_lst(&lst[B], 'b');
+			s_lst(&lst[B], 'b');
+			rr_lst(&lst[B], 'b');
 		}
 	}
 	opr_a = opr_a / 10;
@@ -223,9 +223,9 @@ void	sort_pair_b(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
 	if (opr_b % 10 == 1)
 	{
 		if (opr_a % 10 == 1)
-			ss_lst(lst_a, lst_b);
+			ss_lst(&lst[A], &lst[B]);
 		else
-			s_lst(lst_b, 'b');
+			s_lst(&lst[B], 'b');
 	}
 }
 
