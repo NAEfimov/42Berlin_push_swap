@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/15 10:23:01 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 14:51:51 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	sort_pair_b(t_list **lst_a, t_list **lst_b, int len_a, int len_b);
 void	return_numbers(t_list **lst_a, t_list **lst_b, int *cmd);
 void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
 void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
-void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
+void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, t_list **cmd_lst);
 
 // Commands list
 int		add_cmd(t_list **cmd_lst, int lst, int num);

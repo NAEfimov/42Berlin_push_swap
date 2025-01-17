@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:46:33 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/15 13:13:19 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 14:52:04 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 	int	r_count;
 	int	rr_back;
 
-	while (cmd[1] > 3)
+	while (cmd[1] > 3 && lst_is_sorted_down(*lst_a, cmd[1]) == 0)
 	{
 		to_move = cmd[1] / 2;
 		m = get_n_minmax_value(*lst_a, cmd, to_move);
@@ -69,7 +69,7 @@ void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
 	int	r_count;
 	int	rr_back;
 
-	while (cmd[1] > 3)
+	while (cmd[1] > 3 && lst_is_sorted_up(*lst_b, cmd[1]) == 0)
 	{
 		to_move = cmd[1] / 2;
 		m = get_n_minmax_value(*lst_b, cmd, to_move);
@@ -121,7 +121,7 @@ int	ft_sqrt(int num)
 	return (i);	
 }
 
-void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst)
+void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, t_list **cmd_lst)
 {
 	int	m;
 	int	m_fr;
@@ -129,10 +129,12 @@ void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_ls
 	int to_fr;
 	int	r_count;
 	int	rr_back;
+	int	*cmd;
 
+	cmd = get_cmd(cmd_lst);
 	if (cmd[1] > 3)
 	{
-		to_fr = ft_sqrt(cmd[1]) / 2;
+		to_fr = 32; //ft_sqrt(cmd[1]) / 2;
 		to_move = (cmd[1] + to_fr) / 2;
 				// printf("to_fr: %i| to_move: %i\n", to_fr, to_move);				// PRINT
 		m = get_n_minmax_value(*lst_a, cmd, (cmd[1] + to_fr) / 2);
@@ -140,7 +142,13 @@ void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_ls
 				// printh_lst(*lst_a, 'a');				// PRINT
 				// printh_lst(*lst_b, 'b');				// PRINT
 				// printf("m: %i| m_fr: %i\n", m, m_fr);				// PRINT
-		add_cmd_check(cmd_lst, BR, to_move);
+				
+		// add_cmd_check(cmd_lst, BR, to_move);
+		// add_cmd(cmd_lst, B, to_move - to_fr);
+
+		add_cmd_check(cmd_lst, BR, to_fr);
+		add_cmd(cmd_lst, B, to_fr);
+		add_cmd_check(cmd_lst, BR, to_move - to_fr);
 		add_cmd(cmd_lst, B, to_move - to_fr);
 		
 		r_count = 0;
@@ -151,18 +159,9 @@ void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_ls
 			{
 				if (get_int(*lst_a) < m_fr)
 				{
-					while (rr_back > 0 && get_int(*lst_a) < get_int(*lst_b))
-					{
-						r_lst(lst_b, 'b');
-						rr_back--;
-					}
-					while (*lst_b && (get_int(*lst_a) > get_int(ft_lstlast(*lst_b))))
-						{
-							rr_lst(lst_b, 'b');
-							rr_back++;
-						}
 					p_lst(lst_a, lst_b, 'b');
-					rr_back++;
+					if ((*lst_b)->next)
+						rr_back++;
 					to_move--;
 					cmd[1]--;
 					// printh_lst(*lst_a, 'a');				// PRINT
@@ -184,8 +183,6 @@ void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_ls
 					// printf("rr_back: %i\n", rr_back);				// PRINT
 				}
 			}
-			/* else if ((to_move == 1) && (*lst_a)->next && get_int((*lst_a)->next) < m)
-				s_lst_pair(lst_a, lst_b); */
 			else
 			{
 				if (rr_back > 0)
@@ -196,6 +193,7 @@ void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_ls
 				else
 					r_lst(lst_a, 'a');
 			}
+			
 		}
 		while (rr_back-- > 0)					
 			r_lst(lst_b, 'b');
@@ -219,4 +217,5 @@ void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_ls
 			// printh_lst(*lst_a, 'a');				// PRINT
 			// printh_lst(*lst_b, 'b');				// PRINT
 	}
+	del_int(cmd);
 }
