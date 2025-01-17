@@ -6,14 +6,14 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 17:11:24 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:06:54 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "main.h"
 
-// Sort 3 first integers in the list (lowerst is first)
+/* // Sort 3 first integers in the list (lowerst is first)
 void	sort_triad_down(t_list **lst, char c)
 {
 	int	s;
@@ -22,19 +22,19 @@ void	sort_triad_down(t_list **lst, char c)
 	if (s == 2)
 	{
 		if (get_intn(*lst, 1) > get_intn(*lst, 2))
-			s_lst(lst, c);
+			s_lst(st,;
 	}
 	else if (s > 2)
 	{
 		while (!(lst_is_sorted_down(*lst, 3)))
 		{
 			if (get_intn(*lst, 1) > get_intn(*lst, 2))
-				s_lst(lst, c);
+				s_lst(st,;
 			if (get_intn(*lst, 2) > get_intn(*lst, 3))
 			{
 				r_lst(lst, c);
-				s_lst(lst, c);
-				rr_lst(lst, c);
+				s_lst(st,;
+				rr_lst(st,;
 			}
 		}
 	}
@@ -49,23 +49,23 @@ void	sort_triad_up(t_list **lst, char c)
 	if (s == 2)
 	{
 		if (get_intn(*lst, 1) < get_intn(*lst, 2))
-			s_lst(lst, c);
+			s_lst(st,;
 	}
 	else if (s > 2)
 	{
 		while (!(lst_is_sorted_up(*lst, 3)))
 		{
 			if (get_intn(*lst, 1) < get_intn(*lst, 2))
-				s_lst(lst, c);
+				s_lst(st,;
 			if (get_intn(*lst, 2) < get_intn(*lst, 3))
 			{
 				r_lst(lst, c);
-				s_lst(lst, c);
-				rr_lst(lst, c);
+				s_lst(st,;
+				rr_lst(st,;
 			}
 		}
 	}
-}
+} */
 
 void	return_numbers(t_list *lst[3])
 {
@@ -75,10 +75,10 @@ void	return_numbers(t_list *lst[3])
 	// printf("cmd: %i, %i\n", cmd[0], cmd[1]);
 	if (cmd[0] == AR)
 		while (cmd[1]-- > 0)
-			p_lst(&lst[A], &lst[B], 'b');
+			p_lst(lst, 'b');
 	else
 		while (cmd[1]-- > 0)
-			p_lst(&lst[B], &lst[A], 'a');
+			p_lst(lst, 'a');
 	del_int(cmd);
 }
 
@@ -148,9 +148,9 @@ void	sort_pair_a(t_list *lst[3], int len_a, int len_b)
 	if (opr_a % 10 == 1)
 	{
 		if (opr_b % 10 == 1)
-			ss_lst(&lst[A], &lst[B]);
+			ss_lst(lst);
 		else
-			s_lst(&lst[A], 'a');
+			s_lst(lst, 'a');
 	}
 	opr_a = opr_a / 10;
 	opr_b = opr_b / 10;
@@ -159,14 +159,14 @@ void	sort_pair_a(t_list *lst[3], int len_a, int len_b)
 		if (opr_b % 10 == 1)
 		{
 			r_lst_ab(lst);
-			ss_lst(&lst[A], &lst[B]);
-			rr_lst_ab(&lst[A], &lst[B]);
+			ss_lst(lst);
+			rr_lst_ab(lst);
 		}
 		else
 		{
-			r_lst(&lst[A], 'a');
-			s_lst(&lst[A], 'a');
-			rr_lst(&lst[A], 'a');
+			r_lst(lst, 'a');
+			s_lst(lst, 'a');
+			rr_lst(lst, 'a');
 		}
 	}
 	opr_a = opr_a / 10;
@@ -174,9 +174,9 @@ void	sort_pair_a(t_list *lst[3], int len_a, int len_b)
 	if (opr_a % 10 == 1)
 	{
 		if (opr_b % 10 == 1)
-			ss_lst(&lst[A], &lst[B]);
+			ss_lst(lst);
 		else
-			s_lst(&lst[A], 'a');
+			s_lst(lst, 'a');
 	}
 }
 
@@ -197,9 +197,9 @@ void	sort_pair_b(t_list *lst[3], int len_a, int len_b)
 	if (opr_b % 10 == 1)
 	{
 		if (opr_a % 10 == 1)
-			ss_lst(&lst[A], &lst[B]);
+			ss_lst(lst);
 		else
-			s_lst(&lst[B], 'b');
+			s_lst(lst, 'b');
 	}
 	opr_a = opr_a / 10;
 	opr_b = opr_b / 10;
@@ -208,14 +208,14 @@ void	sort_pair_b(t_list *lst[3], int len_a, int len_b)
 		if (opr_a % 10 == 1)
 		{
 			r_lst_ab(lst);
-			ss_lst(&lst[A], &lst[B]);
-			rr_lst_ab(&lst[A], &lst[B]);
+			ss_lst(lst);
+			rr_lst_ab(lst);
 		}
 		else
 		{
-			r_lst(&lst[B], 'b');
-			s_lst(&lst[B], 'b');
-			rr_lst(&lst[B], 'b');
+			r_lst(lst, 'b');
+			s_lst(lst, 'b');
+			rr_lst(lst, 'b');
 		}
 	}
 	opr_a = opr_a / 10;
@@ -223,9 +223,9 @@ void	sort_pair_b(t_list *lst[3], int len_a, int len_b)
 	if (opr_b % 10 == 1)
 	{
 		if (opr_a % 10 == 1)
-			ss_lst(&lst[A], &lst[B]);
+			ss_lst(lst);
 		else
-			s_lst(&lst[B], 'b');
+			s_lst(lst, 'b');
 	}
 }
 

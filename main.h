@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 17:13:43 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:07:29 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int		get_int(t_list *lst);
 int		get_intn(t_list *lst, unsigned int n);
 
 // Sort operations
-void	r_lst(t_list **lst, char c);
+void	r_lst(t_list *lst[3], char c);
 void	r_lst_ab(t_list *lst[3]);
-void	rr_lst(t_list **lst, char c);
-void	rr_lst_ab(t_list **lst_a, t_list **lst_b);
-void	s_lst(t_list **lst, char c);
-void	ss_lst(t_list **lst_a, t_list **lst_b);
-void	s_lst_pair(t_list **lst_a, t_list **lst_b);
-void	p_lst(t_list **lst_a, t_list **lst_b, char c);
+void	rr_lst(t_list *lst[3], char c);
+void	rr_lst_ab(t_list *lst[3]);
+void	s_lst(t_list *lst[3], char c);
+void	ss_lst(t_list *lst[3]);
+void	s_lst_pair(t_list *lst[3]);
+void	p_lst(t_list *lst[3], char c);
 
 // Sort utils
 int		lst_is_sorted_down(t_list *lst, int n);
@@ -61,8 +61,8 @@ int		get_n_minmax_value(t_list *lst, int *cmd, int n);
 
 // Sort list
 void 	make_sort(t_list *lst[3], int len, int to_btm);
-void	sort_triad_down(t_list **lst, char c);
-void	sort_triad_up(t_list **lst, char c);
+/* void	sort_triad_down(t_list **lst, char c);
+void	sort_triad_up(t_list **lst, char c); */
 void	sort_pair_a(t_list *lst[3], int len_a, int len_b);
 void	sort_pair_b(t_list *lst[3], int len_a, int len_b);
 void	return_numbers(t_list *lst[3]);

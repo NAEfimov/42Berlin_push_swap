@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:46:33 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 17:12:39 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:08:10 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,21 @@ void	divide_lst_a(t_list *lst[3])
 		{
 			if (get_int(lst[A]) < m)
 			{
-				p_lst(&lst[A], &lst[B], 'b');
+				p_lst(lst, 'b');
 				to_move--;
 				cmd[1]--;
 			}
 			else if ((to_move == 1) && lst[A]->next && get_int((lst[A])->next) < m)
-				s_lst_pair(&lst[A], &lst[B]);
+				s_lst_pair(lst);
 			else
 			{
-				r_lst(&lst[A], 'a');
+				r_lst(lst, 'a');
 				if (rr_back)
 					r_count++;
 			}
 		}
 		while (r_count-- > 0)
-			rr_lst(&lst[A], 'a');
+			rr_lst(lst, 'a');
 	}
 		// printh_lst(*lst_a, 'a');				// PRINT
 		// printh_lst(*lst_b, 'b');				// PRINT
@@ -93,20 +93,20 @@ void	divide_lst_b(t_list *lst[3])
 		{
 			if (get_int(lst[B]) > m)
 			{
-				p_lst(&lst[B], &lst[A], 'a');
+				p_lst(lst, 'a');
 				to_move--;
 				cmd[1]--;
 			}
 			else if ((to_move == 1) && lst[B]->next && get_int((lst[B])->next) > m)
-				s_lst_pair(&lst[A], &lst[B]);
+				s_lst_pair(lst);
 			else
 			{
-				r_lst(&lst[B], 'b');
+				r_lst(lst, 'b');
 				r_count++;
 			}
 		}
 		while (rr_back && (r_count-- > 0))
-			rr_lst(&lst[B], 'b');
+			rr_lst(lst, 'b');
 	}
 	
 		// printh_lst(*lst_a, 'a');				// PRINT
@@ -165,7 +165,7 @@ void	divide_lst_a_init(t_list *lst[3], int to_btm)
 			{
 				if (get_int(lst[A]) < m_btm)
 				{
-					p_lst(&lst[A], &lst[B], 'b');
+					p_lst(lst, 'b');
 					if ((lst[B])->next)
 						rr_back++;
 					to_move--;
@@ -178,10 +178,10 @@ void	divide_lst_a_init(t_list *lst[3], int to_btm)
 				{
 					while (rr_back > 0)
 					{						
-						r_lst(&lst[B], 'b');
+						r_lst(lst, 'b');
 						rr_back--;
 					}
-					p_lst(&lst[A], &lst[B], 'b');
+					p_lst(lst, 'b');
 					to_move--;
 					cmd[1]--;
 					// printh_lst(*lst_a, 'a');				// PRINT
@@ -197,14 +197,14 @@ void	divide_lst_a_init(t_list *lst[3], int to_btm)
 					rr_back--;
 				}
 				else
-					r_lst(&lst[A], 'a');
+					r_lst(lst, 'a');
 			}
 			
 		}
 		while (rr_back-- > 0)					
-			r_lst(&lst[B], 'b');
+			r_lst(lst, 'b');
 		while (r_count-- > 0)
-			rr_lst(&lst[A], 'a');
+			rr_lst(lst, 'a');
 		add_cmd(&lst[CMD], A, ft_lstsize(lst[A]));
 			
 		// printh_lst(*lst_a, 'a');				// PRINT
