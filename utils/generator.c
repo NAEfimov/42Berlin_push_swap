@@ -18,7 +18,7 @@ int exists_in_array(int *arr, int size, int num) {
 void generate_unique_random_numbers(int *arr, int n) {
     int count = 0;
     while (count < n) {
-        int num = rand() % MAX_RANGE;// - (MAX_RANGE / 2);  // Generate random number in range [0, MAX_RANGE)
+        int num = rand() % n; // MAX_RANGE;// - (MAX_RANGE / 2);  // Generate random number in range [0, MAX_RANGE)
         if (!exists_in_array(arr, count, num)) {
             arr[count] = num;  // Add number if it is unique
             count++;
