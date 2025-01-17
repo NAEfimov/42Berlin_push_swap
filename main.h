@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 14:51:51 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:12:18 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		get_median_value(t_list *lst, int *cmd);
 int		get_n_minmax_value(t_list *lst, int *cmd, int n);
 
 // Sort list
-void 	make_sort(t_list **lst_a, t_list **lst_b, int len);
+void 	make_sort(t_list *lst[2], int len);
 void	sort_triad_down(t_list **lst, char c);
 void	sort_triad_up(t_list **lst, char c);
 void	sort_pair_a(t_list **lst_a, t_list **lst_b, int len_a, int len_b);
