@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/14 15:06:54 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:08:07 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,24 @@
 int	main(int argc, char *argv[])
 {
 	int		len;
-	t_list	*lst_a;
-	t_list	*lst_b;
+	t_list	*lst[2];
+	// t_list	*lst_a;
+	// t_list	*lst_b;
 
-	lst_a = NULL;
-	lst_b = NULL;
-	len = read_args(argc, argv, &lst_a);
+	// lst_a = NULL;
+	// lst_b = NULL;
+	lst[A] = NULL;
+	lst[B] = NULL;
+	len = read_args(argc, argv, lst);
 	if (len < 0)
 		return (print_error());
 	else if (len == 0)
 		return (0);
 	else
-		make_sort(&lst_a, &lst_b, len);
+		make_sort(&lst[A], &lst[B], len);
 	// printh_lst(lst_a, 'a');					//PRINT
 	// printh_lst(lst_b, 'b');					//PRINT
-	ft_lstclear(&lst_a, del_int);
-	ft_lstclear(&lst_b, del_int);
+	ft_lstclear(&lst[A], del_int);
+	ft_lstclear(&lst[B], del_int);
 	return (0);
 }
