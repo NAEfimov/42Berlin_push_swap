@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 15:14:26 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 16:43:22 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,19 @@ void	sort_triad_up(t_list **lst, char c)
 	}
 }
 
-void	return_numbers(t_list **lst_a, t_list **lst_b, int *cmd)
+void	return_numbers(t_list *lst[3])
 {
+	int *cmd;
+
+	cmd = get_cmd(&lst[CMD]);
+	// printf("cmd: %i, %i\n", cmd[0], cmd[1]);
 	if (cmd[0] == AR)
 		while (cmd[1]-- > 0)
-			p_lst(lst_a, lst_b, 'b');
+			p_lst(&lst[A], &lst[B], 'b');
 	else
 		while (cmd[1]-- > 0)
-			p_lst(lst_b, lst_a, 'a');
+			p_lst(&lst[B], &lst[A], 'a');
+	del_int(cmd);
 }
 
 int		calc_opr_a(t_list *a, int len)
@@ -224,36 +229,26 @@ void	sort_pair_b(t_list **lst_a, t_list **lst_b, int len_a, int len_b)
 	}
 }
 
-void	make_sort(t_list *lst[2], int len)
+void	make_sort(t_list *lst[3], int len, int to_btm)
 {
-	t_list	*cmd_lst;
 	int		*cmd;
 
-	cmd_lst = NULL;
-	init_cmd(&cmd_lst, len);
-	
-		// printh_lst(lst[A], 'a');				// PRINT
-		// printh_lst(lst[B], 'b');				// PRINT
-		// print_cmd(cmd_lst);
-		
-	// cmd = get_cmd(&cmd_lst);
-	divide_lst_a_init(&lst[A], &lst[B], &cmd_lst);
-	// del_int(cmd);
-	
-		// print_cmd(cmd_lst);
-		// printh_lst(lst[A], 'a');				// PRINT
-		// printh_lst(lst[B], 'b');				// PRINT
-		
-	while (cmd_lst)
+	lst[CMD] = NULL;
+	init_cmd(&lst[CMD], len);
+	divide_lst_a_init(lst, to_btm);
+	while (lst[CMD])
 	{
-		cmd = get_cmd(&cmd_lst);
+		// printh_lst(lst[A], 'a');				// PRINT
+		// printh_lst(lst[B], 'b');				// PRINT
+		// print_cmd(lst[CMD]);
+		cmd = read_cmd(lst[CMD]);
 		if (cmd[0] == A)
-			divide_lst_a(&lst[A], &lst[B], cmd, &cmd_lst);
+			divide_lst_a(lst);
 		else if (cmd[0] == B)
-			divide_lst_b(&lst[A], &lst[B], cmd, &cmd_lst);
+			divide_lst_b(lst);
 		else
-			return_numbers(&lst[A], &lst[B], cmd);
-		del_int(cmd); // FREE COMMAND IN THE END OF IT
+			return_numbers(lst);
+		//del_int(cmd); // FREE COMMAND IN THE END OF IT
 	}
-	ft_lstclear(&cmd_lst, del_int);
+	ft_lstclear(&lst[CMD], del_int);
 }

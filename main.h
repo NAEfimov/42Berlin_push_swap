@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 15:12:18 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 16:36:03 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define B 1
 # define AR 2
 # define BR 3
-
+# define CMD 2
 # define CMD_SIZE 2
 
 // Read and check input args
@@ -60,15 +60,15 @@ int		get_median_value(t_list *lst, int *cmd);
 int		get_n_minmax_value(t_list *lst, int *cmd, int n);
 
 // Sort list
-void 	make_sort(t_list *lst[2], int len);
+void 	make_sort(t_list *lst[3], int len, int to_btm);
 void	sort_triad_down(t_list **lst, char c);
 void	sort_triad_up(t_list **lst, char c);
 void	sort_pair_a(t_list **lst_a, t_list **lst_b, int len_a, int len_b);
 void	sort_pair_b(t_list **lst_a, t_list **lst_b, int len_a, int len_b);
-void	return_numbers(t_list **lst_a, t_list **lst_b, int *cmd);
-void	divide_lst_a(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
-void	divide_lst_b(t_list **lst_a, t_list **lst_b, int *cmd, t_list **cmd_lst);
-void	divide_lst_a_init(t_list **lst_a, t_list **lst_b, t_list **cmd_lst);
+void	return_numbers(t_list *lst[3]);
+void	divide_lst_a(t_list *lst[3]);
+void	divide_lst_b(t_list *lst[3]);
+void	divide_lst_a_init(t_list *lst[3], int to_btm);
 
 // Commands list
 int		add_cmd(t_list **cmd_lst, int lst, int num);
