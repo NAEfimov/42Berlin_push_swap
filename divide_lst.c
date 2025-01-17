@@ -6,14 +6,14 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:46:33 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 18:08:10 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:12:18 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "main.h"
 
-void	divide_lst_a(t_list *lst[3])
+void	divide_lst_a(t_list *lst[4])
 {
 	int	m;
 	int	to_move;
@@ -66,7 +66,7 @@ void	divide_lst_a(t_list *lst[3])
 	del_int(cmd);
 }
 
-void	divide_lst_b(t_list *lst[3])
+void	divide_lst_b(t_list *lst[4])
 {
 	int	m;
 	int	to_move;
@@ -129,7 +129,7 @@ int	ft_sqrt(int num)
 	return (i);	
 }
 
-void	divide_lst_a_init(t_list *lst[3], int to_btm)
+void	divide_lst_a_init(t_list *lst[4], int to_btm)
 {
 	int	m;
 	int	m_btm;

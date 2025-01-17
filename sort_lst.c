@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 18:06:54 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:13:25 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	sort_triad_up(t_list **lst, char c)
 	}
 } */
 
-void	return_numbers(t_list *lst[3])
+void	return_numbers(t_list *lst[4])
 {
 	int *cmd;
 
@@ -131,7 +131,7 @@ int		calc_opr_b(t_list *a, int len)
 }
 
 // For A
-void	sort_pair_a(t_list *lst[3], int len_a, int len_b)
+void	sort_pair_a(t_list *lst[4], int len_a, int len_b)
 {
 	int	opr_a;
 	int opr_b;
@@ -180,7 +180,7 @@ void	sort_pair_a(t_list *lst[3], int len_a, int len_b)
 	}
 }
 
-void	sort_pair_b(t_list *lst[3], int len_a, int len_b)
+void	sort_pair_b(t_list *lst[4], int len_a, int len_b)
 {
 	int	opr_a;
 	int opr_b;
@@ -229,7 +229,7 @@ void	sort_pair_b(t_list *lst[3], int len_a, int len_b)
 	}
 }
 
-void	make_sort(t_list *lst[3], int len, int to_btm)
+void	make_sort(t_list *lst[4], int len, int to_btm)
 {
 	int		*cmd;
 

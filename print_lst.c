@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:08 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/15 12:32:30 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:34:00 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,15 @@ void print_cmd(t_list *lst)
 		if (cmd[0] > 1)
 			c[1] = 'R';
 		printf(" |%c%c %2i|\n", c[0], c[1], cmd[1]);
+		lst = lst->next;
+	}
+}
+
+void print_out(t_list *lst)
+{
+	while (lst != NULL)
+	{
+		printf("%s", (char *)lst->content);
 		lst = lst->next;
 	}
 }

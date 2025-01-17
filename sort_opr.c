@@ -6,18 +6,19 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:48:51 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 18:06:33 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/17 18:36:22 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "main.h"
 
-void	r_lst(t_list *lst[3], char c)
+void	r_lst(t_list *lst[4], char c)
 {
 	t_list	*first;
 	t_list	*second;
 	int		i;
+	char	*str;
 
 	i = c - 'a';
 	first = lst[i];
@@ -28,12 +29,18 @@ void	r_lst(t_list *lst[3], char c)
 		first->next = NULL;
 		lst[i] = second;
 	}
-	write(1, "r", 1);
-	write(1, &c, 1);
-	write(1, "\n", 1);
+	// write(1, "r", 1);
+	// write(1, &c, 1);
+	// write(1, "\n", 1);
+	if (c == 'a')
+		str = "ra\n";
+	else
+		str = "rb\n";
+	first = ft_lstnew((void *)ft_strdup((const char *)str));
+	ft_lstadd_back(&lst[OUT], first);
 }
 
-void	r_lst_ab(t_list *lst[3])
+void	r_lst_ab(t_list *lst[4])
 {
 	t_list	*first;
 	t_list	*second;
@@ -54,7 +61,9 @@ void	r_lst_ab(t_list *lst[3])
 		first->next = NULL;
 		lst[B] = second;
 	}
-	write(1, "rr\n", 3);
+	// write(1, "rr\n", 3);
+	first = ft_lstnew((void *)ft_strdup("rr\n"));
+	ft_lstadd_back(&lst[OUT], first);
 }
 
 void	rr_lst_make(t_list **lst)
@@ -76,22 +85,34 @@ void	rr_lst_make(t_list **lst)
 	}
 }
 
-void	rr_lst(t_list *lst[3], char c)
+void	rr_lst(t_list *lst[4], char c)
 {
 	int		i;
+	char	*str;
+	t_list	*node;
 
 	i = c - 'a';
 	rr_lst_make(&lst[i]);
-	write(1, "rr", 2);
-	write(1, &c, 1);
-	write(1, "\n", 1);
+	// write(1, "rr", 2);
+	// write(1, &c, 1);
+	// write(1, "\n", 1);
+	if (c == 'a')
+		str = "rra\n";
+	else
+		str = "rrb\n";
+	node = ft_lstnew((void *)ft_strdup(str));
+	ft_lstadd_back(&lst[OUT], node);
 }
 
-void	rr_lst_ab(t_list *lst[3])
+void	rr_lst_ab(t_list *lst[4])
 {
+	t_list	*node;
+
 	rr_lst_make(&lst[A]);
 	rr_lst_make(&lst[B]);
-	write(1, "rrr\n", 4);
+	// write(1, "rrr\n", 4);
+	node = ft_lstnew((void *)ft_strdup("rrr\n"));
+	ft_lstadd_back(&lst[OUT], node);
 }
 
 void	s_lst_make(t_list **lst)
@@ -110,25 +131,37 @@ void	s_lst_make(t_list **lst)
 	*lst = second;
 }
 
-void	s_lst(t_list *lst[3], char c)
+void	s_lst(t_list *lst[4], char c)
 {
-	int	i;
+	int		i;
+	char	*str;
+	t_list	*node;
 
 	i = c - 'a';
 	s_lst_make(&lst[i]);
-	write(1, "s", 1);
-	write(1, &c, 1);
-	write(1, "\n", 1);
+	// write(1, "s", 1);
+	// write(1, &c, 1);
+	// write(1, "\n", 1);
+	if (c == 'a')
+		str = "sa\n";
+	else
+		str = "sb\n";
+	node = ft_lstnew((void *)ft_strdup(str));
+	ft_lstadd_back(&lst[OUT], node);
 }
 
-void	ss_lst(t_list *lst[3])
+void	ss_lst(t_list *lst[4])
 {
+	t_list	*node;
+
 	s_lst_make(&lst[A]);
 	s_lst_make(&lst[B]);
-	write(1, "ss\n", 3);
+	// write(1, "ss\n", 3);
+	node = ft_lstnew((void *)ft_strdup("ss\n"));
+	ft_lstadd_back(&lst[OUT], node);
 }
 
-void	s_lst_pair(t_list *lst[3])
+void	s_lst_pair(t_list *lst[4])
 {
 	int	a;
 	int	b;
@@ -153,11 +186,13 @@ void	s_lst_pair(t_list *lst[3])
 		s_lst(lst, 'b');		
 }
 
-void	p_lst(t_list *lst[3], char c)
+void	p_lst(t_list *lst[4], char c)
 {
 	t_list	*node;
 	t_list	**lst_a;
 	t_list	**lst_b;
+	char	*str;
+
 
 	if ( c == 'a')
 	{
@@ -172,7 +207,13 @@ void	p_lst(t_list *lst[3], char c)
 	node = *lst_a;
 	*lst_a = (*lst_a)->next;
 	ft_lstadd_front(lst_b, node);
-	write(1, "p", 1);
-	write(1, &c, 1);
-	write(1, "\n", 1);
+	// write(1, "p", 1);
+	// write(1, &c, 1);
+	// write(1, "\n", 1);
+	if (c == 'a')
+		str = "pa\n";
+	else
+		str = "pb\n";
+	node = ft_lstnew((void *)ft_strdup(str));
+	ft_lstadd_back(&lst[OUT], node);
 }
