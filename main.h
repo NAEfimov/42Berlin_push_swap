@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 18:33:16 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/18 21:28:26 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	sort_pair_b(t_list *lst[4], int len_a, int len_b);
 void	return_numbers(t_list *lst[4]);
 void	divide_lst_a(t_list *lst[4]);
 void	divide_lst_b(t_list *lst[4]);
-void	divide_lst_a_init(t_list *lst[4], int to_btm);
+void	divide_lst_a_init(t_list *lst[4], int to_btm, int n);
 
 // Commands list
 int		add_cmd(t_list **cmd_lst, int lst, int num);

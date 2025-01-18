@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:46:33 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 18:12:18 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/18 21:28:47 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int	ft_sqrt(int num)
 	return (i);	
 }
 
-void	divide_lst_a_init(t_list *lst[4], int to_btm)
+void	divide_lst_a_init(t_list *lst[4], int to_btm, int n)
 {
 	int	m;
 	int	m_btm;
@@ -141,9 +141,9 @@ void	divide_lst_a_init(t_list *lst[4], int to_btm)
 	cmd = get_cmd(&lst[CMD]);
 	if (cmd[1] > 3)
 	{
-		to_move = (cmd[1] + to_btm) / 2;
+		to_move = (cmd[1] + to_btm) / 2 - n;
 				// printf("to_fr: %i| to_move: %i\n", to_fr, to_move);				// PRINT
-		m = get_n_minmax_value(lst[A], cmd, (cmd[1] + to_btm) / 2);
+		m = get_n_minmax_value(lst[A], cmd, (cmd[1] + to_btm) / 2 - n);
 		m_btm = get_n_minmax_value(lst[A], cmd, to_btm);
 				// printh_lst(*lst_a, 'a');				// PRINT
 				// printh_lst(*lst_b, 'b');				// PRINT

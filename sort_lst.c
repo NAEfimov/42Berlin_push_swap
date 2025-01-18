@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 18:13:25 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/18 21:41:13 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,7 +235,7 @@ void	make_sort(t_list *lst[4], int len, int to_btm)
 
 	lst[CMD] = NULL;
 	init_cmd(&lst[CMD], len);
-	divide_lst_a_init(lst, to_btm);
+	divide_lst_a_init(lst, to_btm, 9);
 	while (lst[CMD])
 	{
 		// printh_lst(lst[A], 'a');				// PRINT
