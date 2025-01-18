@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/18 21:42:38 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:57:32 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	else
 	{
-		del = len / 8;
+		del = len / 4 - (len / 4) % 2;
 		del_m = 0;
 		if (len <= 100)
 			min = 700;
@@ -43,7 +43,7 @@ int	main(int argc, char *argv[])
 			min = 5500;
 		else
 			min = INT_MAX;
-		while ((del < len / 2) && (del_m == 0))
+		while ((del < len / 10 * 4) && (del_m == 0))
 		{
 			ft_lstclear(&lst[A], del_int);
 			len = read_args(argc, argv, &lst[A]);
