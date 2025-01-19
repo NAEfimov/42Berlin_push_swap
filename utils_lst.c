@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:46:11 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/10 15:46:40 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/19 21:10:58 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	get_int(t_list *lst)
 	return (*(int *)lst->content);
 }
 
-int	get_intn(t_list *lst, unsigned int n)
+int	get_nint(t_list *lst, unsigned int n)
 {
 	while (n-- > 1)
 		lst = lst->next;

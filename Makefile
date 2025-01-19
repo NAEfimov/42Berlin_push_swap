@@ -30,11 +30,15 @@ SRCS		:=		\
 	read_lst.c		\
 	print_lst.c		\
 	utils_lst.c		\
-	sort_opr.c		\
+	sort_opr_r.c	\
+	sort_opr_sp.c	\
 	sort_utl.c		\
 	sort_lst.c		\
 	cmd_lst.c		\
-	divide_lst.c
+	sort_three.c	\
+	div_lst_a.c		\
+	div_lst_b.c		\
+	div_lst_init.c
 
 OBJS		:= $(SRCS:%.c=%.o)
 DEPS		:= $(OBJS:.o=.d)

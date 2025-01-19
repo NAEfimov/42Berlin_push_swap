@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:08 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/17 18:34:00 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/19 20:48:44 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	printh_lst(t_list *lst, char c)
 	printf("\n");
 }
 
-void print_cmd(t_list *lst)
+void	print_cmd(t_list *lst)
 {
 	int		*cmd;
 	char	c[2];
-	
+
 	while (lst != NULL)
 	{
 		cmd = (int *)lst->content;
@@ -59,7 +59,7 @@ void print_cmd(t_list *lst)
 	}
 }
 
-void print_out(t_list *lst)
+void	print_out(t_list *lst)
 {
 	while (lst != NULL)
 	{

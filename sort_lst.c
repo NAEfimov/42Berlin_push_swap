@@ -6,73 +6,18 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 13:59:55 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/19 20:40:01 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "main.h"
 
-/* // Sort 3 first integers in the list (lowerst is first)
-void	sort_triad_down(t_list **lst, char c)
-{
-	int	s;
-
-	s = ft_lstsize(*lst);
-	if (s == 2)
-	{
-		if (get_intn(*lst, 1) > get_intn(*lst, 2))
-			s_lst(st,;
-	}
-	else if (s > 2)
-	{
-		while (!(lst_is_sorted_down(*lst, 3)))
-		{
-			if (get_intn(*lst, 1) > get_intn(*lst, 2))
-				s_lst(st,;
-			if (get_intn(*lst, 2) > get_intn(*lst, 3))
-			{
-				r_lst(lst, c);
-				s_lst(st,;
-				rr_lst(st,;
-			}
-		}
-	}
-}
-
-// Sort 3 first integers in the list (highest is first)
-void	sort_triad_up(t_list **lst, char c)
-{
-	int	s;
-
-	s = ft_lstsize(*lst);
-	if (s == 2)
-	{
-		if (get_intn(*lst, 1) < get_intn(*lst, 2))
-			s_lst(st,;
-	}
-	else if (s > 2)
-	{
-		while (!(lst_is_sorted_up(*lst, 3)))
-		{
-			if (get_intn(*lst, 1) < get_intn(*lst, 2))
-				s_lst(st,;
-			if (get_intn(*lst, 2) < get_intn(*lst, 3))
-			{
-				r_lst(lst, c);
-				s_lst(st,;
-				rr_lst(st,;
-			}
-		}
-	}
-} */
-
 void	return_numbers(t_list *lst[4])
 {
-	int *cmd;
+	int	*cmd;
 
 	cmd = get_cmd(&lst[CMD]);
-	// printf("cmd: %i, %i\n", cmd[0], cmd[1]);
 	if (cmd[0] == AR)
 		while (cmd[1]-- > 0)
 			p_lst(lst, 'b');
@@ -82,59 +27,11 @@ void	return_numbers(t_list *lst[4])
 	del_int(cmd);
 }
 
-int		calc_opr_a(t_list *a, int len)
-{
-	int		opr;
-	t_list	*b;
-	t_list	*c;
-	
-	opr = 0;
-	if (len > 1)
-	{
-		b = a->next;
-		if (get_int(a) > get_int(b))
-			opr = 1;
-	}
-	if (len > 2)
-	{
-		c = b->next;
-		if (get_int(b) > get_int(c) || (get_int(b) < get_int(c) && get_int(a) > get_int(c)))
-			opr +=10;
-		if (get_int(a) > get_int(c) && get_int(b) > get_int(c))
-			opr +=100;
-	}
-	return (opr);
-}
-
-int		calc_opr_b(t_list *a, int len)
-{
-	int		opr;
-	t_list	*b;
-	t_list	*c;
-	
-	opr = 0;
-	if (len > 1)
-	{
-		b = a->next;
-		if (get_int(a) < get_int(b))
-			opr = 1;
-	}
-	if (len > 2)
-	{
-		c = b->next;
-		if (get_int(b) < get_int(c) || (get_int(b) > get_int(c) && get_int(a) < get_int(c)))
-			opr +=10;
-		if (get_int(a) < get_int(c) && get_int(b) < get_int(c))
-			opr +=100;
-	}
-	return (opr);
-}
-
 // For A
 void	sort_pair_a(t_list *lst[4], int len_a, int len_b)
 {
 	int	opr_a;
-	int opr_b;
+	int	opr_b;
 
 	if (ft_lstsize(lst[A]) < len_a)
 		len_a = ft_lstsize(lst[A]);
@@ -142,46 +39,19 @@ void	sort_pair_a(t_list *lst[4], int len_a, int len_b)
 		len_b = ft_lstsize(lst[B]);
 	opr_a = calc_opr_a(lst[A], len_a);
 	opr_b = calc_opr_b(lst[B], len_b);
-	
-	if (opr_a % 10 == 1)
-	{
-		if (opr_b % 10 == 1)
-			ss_lst(lst);
-		else
-			s_lst(lst, 'a');
-	}
+	sort_pair_ss(lst, opr_a, opr_b, 'a');
 	opr_a = opr_a / 10;
 	opr_b = opr_b / 10;
-	if (opr_a % 10 == 1)
-	{
-		if (opr_b % 10 == 1)
-		{
-			r_lst_ab(lst);
-			ss_lst(lst);
-			rr_lst_ab(lst);
-		}
-		else
-		{
-			r_lst(lst, 'a');
-			s_lst(lst, 'a');
-			rr_lst(lst, 'a');
-		}
-	}
+	sort_pair_rr(lst, opr_a, opr_b, 'a');
 	opr_a = opr_a / 10;
-	opr_b = opr_b / 10;	
-	if (opr_a % 10 == 1)
-	{
-		if (opr_b % 10 == 1)
-			ss_lst(lst);
-		else
-			s_lst(lst, 'a');
-	}
+	opr_b = opr_b / 10;
+	sort_pair_ss(lst, opr_a, opr_b, 'a');
 }
 
 void	sort_pair_b(t_list *lst[4], int len_a, int len_b)
 {
 	int	opr_a;
-	int opr_b;
+	int	opr_b;
 
 	if (ft_lstsize(lst[A]) < len_a)
 		len_a = ft_lstsize(lst[A]);
@@ -189,40 +59,13 @@ void	sort_pair_b(t_list *lst[4], int len_a, int len_b)
 		len_b = ft_lstsize(lst[B]);
 	opr_a = calc_opr_a(lst[A], len_a);
 	opr_b = calc_opr_b(lst[B], len_b);
-	
-	if (opr_b % 10 == 1)
-	{
-		if (opr_a % 10 == 1)
-			ss_lst(lst);
-		else
-			s_lst(lst, 'b');
-	}
+	sort_pair_ss(lst, opr_b, opr_a, 'b');
 	opr_a = opr_a / 10;
 	opr_b = opr_b / 10;
-	if (opr_b % 10 == 1)
-	{
-		if (opr_a % 10 == 1)
-		{
-			r_lst_ab(lst);
-			ss_lst(lst);
-			rr_lst_ab(lst);
-		}
-		else
-		{
-			r_lst(lst, 'b');
-			s_lst(lst, 'b');
-			rr_lst(lst, 'b');
-		}
-	}
+	sort_pair_rr(lst, opr_b, opr_a, 'b');
 	opr_a = opr_a / 10;
-	opr_b = opr_b / 10;	
-	if (opr_b % 10 == 1)
-	{
-		if (opr_a % 10 == 1)
-			ss_lst(lst);
-		else
-			s_lst(lst, 'b');
-	}
+	opr_b = opr_b / 10;
+	sort_pair_ss(lst, opr_b, opr_a, 'b');
 }
 
 void	sort_lst(t_list *lst[4], int len, int to_btm)
@@ -231,14 +74,14 @@ void	sort_lst(t_list *lst[4], int len, int to_btm)
 
 	lst[CMD] = NULL;
 	init_cmd(&lst[CMD], len);
-	divide_lst_a_init(lst, to_btm, len / 10 + 1);
+	divide_a_init(lst, to_btm, len / 10 + 1);
 	while (lst[CMD])
 	{
 		cmd = read_cmd(lst[CMD]);
 		if (cmd[0] == A)
-			divide_lst_a(lst);
+			divide_a(lst);
 		else if (cmd[0] == B)
-			divide_lst_b(lst);
+			divide_b(lst);
 		else
 			return_numbers(lst);
 	}

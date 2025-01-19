@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 13:54:20 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/19 17:52:04 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	make_sort(int argc, char *argv[], t_list *lst[4], int len)
 	int		to_btm;
 	int		min;
 	int		l_size;
-	
+
 	to_btm = len / 4 - (len / 4) % 2;
 	if (len <= 100)
 		min = 700;
@@ -29,7 +29,7 @@ void	make_sort(int argc, char *argv[], t_list *lst[4], int len)
 		min = 5500;
 	else
 		min = INT_MAX;
-	while (to_btm < len / 10 * 4)
+	while (to_btm <= len / 2 - len / 10)
 	{
 		ft_lstclear(&lst[A], del_int);
 		ft_lstclear(&lst[OUT], del_int);
@@ -37,7 +37,7 @@ void	make_sort(int argc, char *argv[], t_list *lst[4], int len)
 		sort_lst(lst, len, to_btm);
 		l_size = ft_lstsize(lst[OUT]);
 		if (l_size < min)
-			break;
+			break ;
 		to_btm++;
 	}
 }
@@ -46,7 +46,6 @@ int	main(int argc, char *argv[])
 {
 	int		len;
 	t_list	*lst[4];
-	
 
 	lst[A] = NULL;
 	lst[B] = NULL;
