@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:52:28 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 00:02:51 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/19 13:59:55 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,7 @@ void	sort_pair_a(t_list *lst[4], int len_a, int len_b)
 		len_b = ft_lstsize(lst[B]);
 	opr_a = calc_opr_a(lst[A], len_a);
 	opr_b = calc_opr_b(lst[B], len_b);
-	// printh_lst(*lst_a, 'a');								//PRINT
-	// printh_lst(*lst_b, 'b');								//PRINT
-	// printf("opr_a: %i | opr_b: %i\n", opr_a, opr_b);	//PRINT
+	
 	if (opr_a % 10 == 1)
 	{
 		if (opr_b % 10 == 1)
@@ -191,9 +189,7 @@ void	sort_pair_b(t_list *lst[4], int len_a, int len_b)
 		len_b = ft_lstsize(lst[B]);
 	opr_a = calc_opr_a(lst[A], len_a);
 	opr_b = calc_opr_b(lst[B], len_b);
-	// printh_lst(*lst_a, 'a');								//PRINT
-	// printh_lst(*lst_b, 'b');								//PRINT
-	// printf("opr_a: %i | opr_b: %i\n", opr_a, opr_b);	//PRINT
+	
 	if (opr_b % 10 == 1)
 	{
 		if (opr_a % 10 == 1)
@@ -229,7 +225,7 @@ void	sort_pair_b(t_list *lst[4], int len_a, int len_b)
 	}
 }
 
-void	make_sort(t_list *lst[4], int len, int to_btm)
+void	sort_lst(t_list *lst[4], int len, int to_btm)
 {
 	int		*cmd;
 
@@ -238,9 +234,6 @@ void	make_sort(t_list *lst[4], int len, int to_btm)
 	divide_lst_a_init(lst, to_btm, len / 10 + 1);
 	while (lst[CMD])
 	{
-		// printh_lst(lst[A], 'a');				// PRINT
-		// printh_lst(lst[B], 'b');				// PRINT
-		// print_cmd(lst[CMD]);
 		cmd = read_cmd(lst[CMD]);
 		if (cmd[0] == A)
 			divide_lst_a(lst);
@@ -248,7 +241,6 @@ void	make_sort(t_list *lst[4], int len, int to_btm)
 			divide_lst_b(lst);
 		else
 			return_numbers(lst);
-		//del_int(cmd); // FREE COMMAND IN THE END OF IT
 	}
 	ft_lstclear(&lst[CMD], del_int);
 }

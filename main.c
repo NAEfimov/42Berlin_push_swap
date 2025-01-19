@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/18 23:57:32 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/19 13:54:20 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,37 @@
 // Sort linked list <lst_a>
 // void	make_sort(void);
 
+void	make_sort(int argc, char *argv[], t_list *lst[4], int len)
+{
+	int		to_btm;
+	int		min;
+	int		l_size;
+	
+	to_btm = len / 4 - (len / 4) % 2;
+	if (len <= 100)
+		min = 700;
+	else if (len <= 500)
+		min = 5500;
+	else
+		min = INT_MAX;
+	while (to_btm < len / 10 * 4)
+	{
+		ft_lstclear(&lst[A], del_int);
+		ft_lstclear(&lst[OUT], del_int);
+		len = read_args(argc, argv, &lst[A]);
+		sort_lst(lst, len, to_btm);
+		l_size = ft_lstsize(lst[OUT]);
+		if (l_size < min)
+			break;
+		to_btm++;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	int		len;
 	t_list	*lst[4];
-	int		del;
-	int		del_m;
-	int		min;
-	int		l_size;
+	
 
 	lst[A] = NULL;
 	lst[B] = NULL;
@@ -34,37 +57,7 @@ int	main(int argc, char *argv[])
 	else if (len == 0)
 		return (0);
 	else
-	{
-		del = len / 4 - (len / 4) % 2;
-		del_m = 0;
-		if (len <= 100)
-			min = 700;
-		else if (len <= 500)
-			min = 5500;
-		else
-			min = INT_MAX;
-		while ((del < len / 10 * 4) && (del_m == 0))
-		{
-			ft_lstclear(&lst[A], del_int);
-			len = read_args(argc, argv, &lst[A]);
-			make_sort(lst, len, del);
-			l_size = ft_lstsize(lst[OUT]);
-			if (l_size < min)
-			{
-				min = l_size;
-				del_m = del;
-			}
-			ft_lstclear(&lst[OUT], del_int);
-			del++;
-		}
-		// printf("del: %i | %i\n", del_m, min);
-		ft_lstclear(&lst[A], del_int);
-		len = read_args(argc, argv, &lst[A]);
-		make_sort(lst, len, del_m);
-	}	
-	// printh_lst(lst[A], 'a');					//PRINT
-	// printh_lst(lst[B], 'b');					//PRINT
-	
+		make_sort(argc, argv, lst, len);
 	print_out(lst[OUT]);
 	ft_lstclear(&lst[A], del_int);
 	ft_lstclear(&lst[B], del_int);
