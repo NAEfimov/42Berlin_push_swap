@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 17:52:04 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/19 22:16:43 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ int	main(int argc, char *argv[])
 	else
 		make_sort(argc, argv, lst, len);
 	print_out(lst[OUT]);
-	ft_lstclear(&lst[A], del_int);
-	ft_lstclear(&lst[B], del_int);
-	ft_lstclear(&lst[CMD], del_int);
-	ft_lstclear(&lst[OUT], del_int);
+	clear_list(lst);
 	return (0);
 }

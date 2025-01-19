@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:08 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 20:48:44 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/19 22:18:43 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,51 @@ int	print_error(void)
 	return (1);
 }
 
-//Print list vertical
+// Function to print list elements line by line
 void	printv_lst(t_list *lst)
 {
+	char	*str;
+
 	while (lst != NULL)
 	{
-		printf("%i\n", *(int *)lst->content);
+		str = ft_itoa(get_int(lst));
+		if (str)
+		{
+			ft_putstr_fd(str, 1);
+			ft_putstr_fd("\n", 1);
+			free(str);
+		}
 		lst = lst->next;
 	}
 }
 
-//Print list vertical
+// Function to print list elements in a line
 void	printh_lst(t_list *lst, char c)
 {
-	printf("%c| ", c);
+	char	*str;
+
+	write(1, &c, 1);
+	ft_putstr_fd("| ", 1);
 	while (lst != NULL)
 	{
-		printf("%3i ", *(int *)lst->content);
+		str = ft_itoa(get_int(lst));
+		if (str)
+		{
+			ft_putstr_fd(str, 1);
+			write(1, " ", 1);
+			free(str);
+		}
 		lst = lst->next;
 	}
-	printf("\n");
+	write(1, "\n", 1);
 }
 
+// Function to print commands list
 void	print_cmd(t_list *lst)
 {
 	int		*cmd;
-	char	c[2];
+	char	c[3];
+	char	*str;
 
 	while (lst != NULL)
 	{
@@ -54,16 +73,26 @@ void	print_cmd(t_list *lst)
 		c[1] = ' ';
 		if (cmd[0] > 1)
 			c[1] = 'R';
-		printf(" |%c%c %2i|\n", c[0], c[1], cmd[1]);
+		c[3] = '\0';
+		ft_putstr_fd(c, 1);
+		ft_putstr_fd("->", 1);
+		str = ft_itoa(cmd[1]);
+		if (str)
+		{
+			ft_putstr_fd(str, 1);
+			free(str);
+		}
+		write(1, "\n", 1);
 		lst = lst->next;
 	}
 }
 
+// Function to print out list of operators
 void	print_out(t_list *lst)
 {
 	while (lst != NULL)
 	{
-		printf("%s", (char *)lst->content);
+		ft_putstr_fd((char *)lst->content, 1);
 		lst = lst->next;
 	}
 }

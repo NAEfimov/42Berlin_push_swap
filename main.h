@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 21:10:58 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/19 22:19:27 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <stdio.h>
 # include "libft.h"
 
 # define A 0
@@ -46,6 +45,7 @@ void	print_out(t_list *lst);
 // List utils
 int		get_int(t_list *lst);
 int		get_nint(t_list *lst, unsigned int n);
+void	clear_list(t_list *lst[4]);
 
 // Sort operations
 void	r_lst(t_list *lst[4], char c);
@@ -60,7 +60,6 @@ void	p_lst(t_list *lst[4], char c);
 // Sort utils
 int		lst_is_sorted_down(t_list *lst, int n);
 int		lst_is_sorted_up(t_list *lst, int n);
-int		get_median_value(t_list *lst, int *cmd);
 int		get_n_minmax_value(t_list *lst, int *cmd, int n);
 
 // Sort list

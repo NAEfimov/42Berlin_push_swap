@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX_RANGE 500  // Define the maximum range for random numbers
+#define MAX_RANGE 1000  // Define the maximum range for random numbers
 
 // Function to check if a number already exists in the array
 int exists_in_array(int *arr, int size, int num) {
@@ -18,7 +18,7 @@ int exists_in_array(int *arr, int size, int num) {
 void generate_unique_random_numbers(int *arr, int n) {
     int count = 0;
     while (count < n) {
-        int num = rand() % n; // MAX_RANGE;// - (MAX_RANGE / 2);  // Generate random number in range [0, MAX_RANGE)
+        int num = rand() % MAX_RANGE - (MAX_RANGE / 2);  // Generate random number in range [0, MAX_RANGE)
         if (!exists_in_array(arr, count, num)) {
             arr[count] = num;  // Add number if it is unique
             count++;
