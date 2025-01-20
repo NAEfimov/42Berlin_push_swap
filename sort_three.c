@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:57:32 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 20:52:29 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/20 13:18:58 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	calc_opr_b(t_list *a, int len)
 	return (opr);
 }
 
-void	sort_pair_ss(t_list *lst[4], int opr_a, int opr_b, char c)
+void	sort_pair_ss(t_list *lst[LS], int opr_a, int opr_b, char c)
 {
 	if (opr_a % 10 == 1)
 	{
@@ -74,7 +74,7 @@ void	sort_pair_ss(t_list *lst[4], int opr_a, int opr_b, char c)
 	}
 }
 
-void	sort_pair_rr(t_list *lst[4], int opr_a, int opr_b, char c)
+void	sort_pair_rr(t_list *lst[LS], int opr_a, int opr_b, char c)
 {
 	if (opr_a % 10 == 1)
 	{

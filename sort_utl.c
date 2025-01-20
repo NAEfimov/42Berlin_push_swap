@@ -6,13 +6,14 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:50:41 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 21:09:57 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:54:43 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "main.h"
 
+// Check if the first <n> elements of lst are sorted down 
 int	lst_is_sorted_down(t_list *lst, int n)
 {
 	t_list	*c_node;
@@ -33,6 +34,7 @@ int	lst_is_sorted_down(t_list *lst, int n)
 	return (1);
 }
 
+// Check if the first <n> elements of lst are sorted up
 int	lst_is_sorted_up(t_list *lst, int n)
 {
 	t_list	*c_node;
@@ -53,6 +55,7 @@ int	lst_is_sorted_up(t_list *lst, int n)
 	return (1);
 }
 
+// Initialise current mm[] elements
 static void	init_m(t_list *lst, int size, int mm[4])
 {
 	int		i;
@@ -70,6 +73,7 @@ static void	init_m(t_list *lst, int size, int mm[4])
 	}
 }
 
+// Check current list element for min and max
 static void	find_next_m(t_list *node, int mm[4])
 {
 	int	num;

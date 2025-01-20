@@ -6,14 +6,14 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:31:16 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/13 19:26:15 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:31:25 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "main.h"
 
-// Convert string with integer number <str> to integer number <int>,
+// Convert string <str> to integer number <int>,
 // allocate memory for it and return a pointer for the number.
 // If there is a reading error return <NULL>
 int	*read_num(char *str)
@@ -44,25 +44,16 @@ int	*read_num(char *str)
 	return (read);
 }
 
-// Function to free list node content
-void	del_int(void *content)
-{
-	free(content);
-}
-
-// Function to free list node content
-void	del_none(void *content)
-{
-	if (content)
-		return ;
-}
-
+// Function to check for int <num> duplicates in list <lst>
 void	check_dup(int **num, t_list *lst)
 {
-	while (lst != NULL)
+	while (*num && lst != NULL)
 	{
-		if ((*num != NULL) && **num == *(int *)lst->content)
+		if (**num == get_int(lst))
+		{
+			free(*num);
 			*num = NULL;
+		}
 		lst = lst->next;
 	}
 }
@@ -70,7 +61,7 @@ void	check_dup(int **num, t_list *lst)
 // Check for correct input and read it to a list of integers
 // Get <argc> and <argv> from main function as input and <*lst_a> as output list
 // Return: <-1> if error; <0> if no args; length of <lst_a> if read is OK
-int	read_args(int argc, char *argv[], t_list **lst)
+int	read_args(int argc, char *argv[], t_list *lst[LS])
 {
 	int		i;
 	int		*num;
@@ -85,14 +76,13 @@ int	read_args(int argc, char *argv[], t_list **lst)
 		while (i < argc)
 		{
 			num = read_num(argv[i]);
-			check_dup(&num, *lst);
+			check_dup(&num, lst[A]);
 			if (num == NULL)
-			{
-				ft_lstclear(lst, del_int);
 				return (-1);
-			}
 			new_node = ft_lstnew(num);
-			ft_lstadd_back(lst, new_node);
+			if (new_node == NULL)
+				clear_exit(lst, -2);
+			ft_lstadd_back(&lst[A], new_node);
 			i++;
 		}
 	}

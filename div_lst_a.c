@@ -6,14 +6,15 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:46:33 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 21:17:22 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:45:13 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "main.h"
 
-int	divide_a_move(t_list *lst[4], int to_move, int m)
+// Move <to_move> elements from stack A to stack B 
+int	divide_a_move(t_list *lst[LS], int to_move, int m)
 {
 	int	r_count;
 
@@ -36,7 +37,8 @@ int	divide_a_move(t_list *lst[4], int to_move, int m)
 	return (r_count);
 }
 
-void	divide_a_half(t_list *lst[4], int *cmd)
+// Divide stack A by half
+void	divide_a_half(t_list *lst[LS], int *cmd)
 {
 	int	m;
 	int	to_move;
@@ -45,8 +47,8 @@ void	divide_a_half(t_list *lst[4], int *cmd)
 
 	to_move = cmd[1] / 2;
 	m = get_n_minmax_value(lst[A], cmd, to_move);
-	add_cmd_return(&lst[CMD], BR, to_move);
-	add_cmd_divide(&lst[CMD], B, to_move);
+	add_cmd_return(lst, BR, to_move);
+	add_cmd_divide(lst, B, to_move);
 	rr_back = 1;
 	if (cmd[1] == ft_lstsize(lst[A]))
 		rr_back = 0;
@@ -56,7 +58,9 @@ void	divide_a_half(t_list *lst[4], int *cmd)
 		rr_lst(lst, 'a');
 }
 
-void	divide_a(t_list *lst[4])
+// Divide stack A by half if number of elements more than 3
+// Else sort the elements 
+void	divide_a(t_list *lst[LS])
 {
 	int	*cmd;
 
@@ -64,5 +68,5 @@ void	divide_a(t_list *lst[4])
 	while (cmd[1] > 3)
 		divide_a_half(lst, cmd);
 	sort_pair_a(lst, cmd[1], cmd[1]);
-	del_int(cmd);
+	free(cmd);
 }

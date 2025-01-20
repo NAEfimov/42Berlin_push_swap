@@ -6,14 +6,15 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:19:25 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 21:20:04 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:50:05 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "main.h"
 
-void	s_lst_make(t_list **lst)
+// Swap the first 2 elements
+static void	s_lst_make(t_list **lst)
 {
 	t_list	*first;
 	t_list	*second;
@@ -29,33 +30,29 @@ void	s_lst_make(t_list **lst)
 	*lst = second;
 }
 
-void	s_lst(t_list *lst[4], char c)
+// Swap the first 2 elements at the top of stack 'c'
+void	s_lst(t_list *lst[LS], char c)
 {
-	int		i;
 	char	*str;
-	t_list	*node;
 
-	i = c - 'a';
-	s_lst_make(&lst[i]);
+	s_lst_make(&lst[c - 'a']);
 	if (c == 'a')
 		str = "sa\n";
 	else
 		str = "sb\n";
-	node = ft_lstnew((void *)ft_strdup(str));
-	ft_lstadd_back(&lst[OUT], node);
+	add_opr_out(lst, str);
 }
 
-void	ss_lst(t_list *lst[4])
+// Swap the first 2 elements at the top of both stacks
+void	ss_lst(t_list *lst[LS])
 {
-	t_list	*node;
-
 	s_lst_make(&lst[A]);
 	s_lst_make(&lst[B]);
-	node = ft_lstnew((void *)ft_strdup("ss\n"));
-	ft_lstadd_back(&lst[OUT], node);
+	add_opr_out(lst, "ss\n");
 }
 
-void	s_lst_pair(t_list *lst[4])
+// Check if we can swap first 2 elements in both stacks
+void	s_lst_pair(t_list *lst[LS])
 {
 	int	a;
 	int	b;
@@ -80,7 +77,9 @@ void	s_lst_pair(t_list *lst[4])
 		s_lst(lst, 'b');
 }
 
-void	p_lst(t_list *lst[4], char c)
+// Take the first element at the top of one stack 
+// and put it at the top of another
+void	p_lst(t_list *lst[LS], char c)
 {
 	t_list	*node;
 	t_list	**lst_a;
@@ -104,6 +103,5 @@ void	p_lst(t_list *lst[4], char c)
 		str = "pa\n";
 	else
 		str = "pb\n";
-	node = ft_lstnew((void *)ft_strdup(str));
-	ft_lstadd_back(&lst[OUT], node);
+	add_opr_out(lst, str);
 }

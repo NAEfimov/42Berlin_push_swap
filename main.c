@@ -6,17 +6,16 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 22:16:43 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:36:09 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "main.h"
 
-// Sort linked list <lst_a>
-// void	make_sort(void);
-
-void	make_sort(int argc, char *argv[], t_list *lst[4], int len)
+// Find optimal division proportion in intialization
+// Make sort 
+void	make_sort(int argc, char *argv[], t_list *lst[LS], int len)
 {
 	int		to_btm;
 	int		min;
@@ -31,8 +30,8 @@ void	make_sort(int argc, char *argv[], t_list *lst[4], int len)
 		min = INT_MAX;
 	while (to_btm <= len / 2 - len / 10)
 	{
-		ft_lstclear(&lst[A], del_int);
-		ft_lstclear(&lst[OUT], del_int);
+		ft_lstclear(&lst[A], free);
+		ft_lstclear(&lst[OUT], free);
 		len = read_args(argc, argv, &lst[A]);
 		sort_lst(lst, len, to_btm);
 		l_size = ft_lstsize(lst[OUT]);
@@ -42,22 +41,20 @@ void	make_sort(int argc, char *argv[], t_list *lst[4], int len)
 	}
 }
 
+// Initialise list, read input and sort stack A if valid input
 int	main(int argc, char *argv[])
 {
 	int		len;
 	t_list	*lst[4];
 
-	lst[A] = NULL;
-	lst[B] = NULL;
-	lst[OUT] = NULL;
-	len = read_args(argc, argv, &lst[A]);
+	init_list(lst);
+	len = read_args(argc, argv, lst);
 	if (len < 0)
-		return (print_error());
+		print_error();
 	else if (len == 0)
-		return (0);
+		clear_exit(lst, 0);
 	else
 		make_sort(argc, argv, lst, len);
 	print_out(lst[OUT]);
-	clear_list(lst);
-	return (0);
+	clear_exit(lst, 0);
 }

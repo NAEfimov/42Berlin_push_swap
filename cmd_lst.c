@@ -6,21 +6,20 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:40:57 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 20:46:44 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/20 17:03:11 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 #include "libft.h"
 
-// Add a command to the list of commands
-// Return <0> if ok, <-1> if malloc error
-int	add_cmd_return(t_list **cmd_lst, int c_lst, int num)
+// Add a return command to the list of commands
+void	add_cmd_return(t_list *lst[LS], int c_lst, int num)
 {
 	int		*cmd;
 	t_list	*node;
 
-	cmd = read_cmd(*cmd_lst);
+	cmd = read_cmd(lst[CMD]);
 	if (cmd && cmd[0] >= AR)
 	{
 		if (cmd[0] != c_lst)
@@ -32,32 +31,31 @@ int	add_cmd_return(t_list **cmd_lst, int c_lst, int num)
 	{
 		cmd = (int *) malloc(sizeof(int) * CMD_SIZE);
 		if (cmd == NULL)
-			return (-1);
+			clear_exit(lst, -2);
 		cmd[0] = c_lst;
 		cmd[1] = num;
 		node = ft_lstnew(cmd);
 		if (node == NULL)
-			return (-2);
-		ft_lstadd_front(cmd_lst, node);
+			clear_exit(lst, -2);
+		ft_lstadd_front(&lst[CMD], node);
 	}
-	return (0);
 }
 
-int	add_cmd_divide(t_list **cmd_lst, int c_lst, int num)
+// Add a divide command to the list of commands
+void	add_cmd_divide(t_list *lst[LS], int c_lst, int num)
 {
 	int		*cmd;
 	t_list	*node;
 
 	cmd = (int *) malloc(sizeof(int) * CMD_SIZE);
 	if (cmd == NULL)
-		return (-1);
+		clear_exit(lst, -2);
 	cmd[0] = c_lst;
 	cmd[1] = num;
 	node = ft_lstnew(cmd);
 	if (node == NULL)
-		return (-2);
-	ft_lstadd_front(cmd_lst, node);
-	return (0);
+		clear_exit(lst, -2);
+	ft_lstadd_front(&lst[CMD], node);
 }
 
 // Read the first command in the list of commands
@@ -73,7 +71,7 @@ int	*read_cmd(t_list *cmd_lst)
 }
 
 // Read the first command in the list of commands
-// and remove it from the list
+// and remove it from the list without removing content
 int	*get_cmd(t_list **cmd_lst)
 {
 	t_list	*node;
@@ -89,9 +87,9 @@ int	*get_cmd(t_list **cmd_lst)
 	return (cmd);
 }
 
-// Initialise the list of commands
-// Return <0> if ok, <-1> if error
-int	init_cmd(t_list **cmd_lst, int len)
+// Function to free list node without content content
+void	del_none(void *content)
 {
-	return (add_cmd_divide(cmd_lst, A, len));
+	if (content)
+		return ;
 }

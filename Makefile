@@ -31,6 +31,7 @@ SRCS		:=		\
 	print_lst.c		\
 	utils_lst.c		\
 	sort_opr_r.c	\
+	sort_opr_rr.c	\
 	sort_opr_sp.c	\
 	sort_utl.c		\
 	sort_lst.c		\
