@@ -6,14 +6,14 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:32:55 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/21 14:46:01 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:55:57 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _BONUS_H
 # define _BONUS_H
 
-#include "main.h"
+# include "main.h"
 
 # define BUFF_SIZE 100
 

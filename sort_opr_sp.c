@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:19:25 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/21 13:11:49 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:56:54 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	s_lst_make(t_list **lst)
 	t_list	*third;
 
 	if (lst && *lst && (*lst)->next)
-	{	
+	{
 		first = *lst;
 		second = (*lst)->next;
 		third = second->next;

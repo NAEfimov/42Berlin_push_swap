@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:43:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/21 14:48:18 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:56:13 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*read_string(char *str)
 
 	buff_str = ft_calloc(BUFF_SIZE + 1, sizeof(char));
 	if (buff_str == NULL)
-		return (NULL);	
+		return (NULL);
 	i = 1;
 	while (i != 0)
 	{
