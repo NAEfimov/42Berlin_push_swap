@@ -26,39 +26,39 @@ LIBS_TARGET := libft/libft.a
 
 INCS        := . libft
 
-SRCS		:=		\
-	main.c			\
-	read_lst.c		\
-	print_lst.c		\
-	utils_lst.c		\
-	sort_opr_r.c	\
-	sort_opr_rr.c	\
-	sort_opr_sp.c	\
-	sort_utl.c		\
-	sort_lst.c		\
-	cmd_lst.c		\
-	sort_three.c	\
-	div_lst_a.c		\
-	div_lst_b.c		\
-	div_lst_init.c
+SRCS		:=			\
+	main.c				\
+	ps_read_lst.c		\
+	ps_print_lst.c		\
+	ps_utils_lst.c		\
+	ps_sort_opr_r.c		\
+	ps_sort_opr_rr.c	\
+	ps_sort_opr_sp.c	\
+	ps_sort_utl.c		\
+	ps_sort_lst.c		\
+	ps_cmd_lst.c		\
+	ps_sort_three.c		\
+	ps_div_lst_a.c		\
+	ps_div_lst_b.c		\
+	ps_div_lst_init.c
 
 SRCS_BONUS	:=			\
 	_bonus_checker.c	\
 	_bonus_str.c		\
 	_bonus_opr.c		\
-	read_lst.c			\
-	print_lst.c			\
-	utils_lst.c			\
-	sort_opr_r.c		\
-	sort_opr_rr.c		\
-	sort_opr_sp.c		\
-	sort_utl.c			\
-	sort_lst.c			\
-	cmd_lst.c			\
-	sort_three.c		\
-	div_lst_a.c			\
-	div_lst_b.c			\
-	div_lst_init.c
+	ps_read_lst.c		\
+	ps_print_lst.c		\
+	ps_utils_lst.c		\
+	ps_sort_opr_r.c		\
+	ps_sort_opr_rr.c	\
+	ps_sort_opr_sp.c	\
+	ps_sort_utl.c		\
+	ps_sort_lst.c		\
+	ps_cmd_lst.c		\
+	ps_sort_three.c		\
+	ps_div_lst_a.c		\
+	ps_div_lst_b.c		\
+	ps_div_lst_init.c
 
 OBJS		:= $(SRCS:%.c=%.o)
 OBJS_BONUS	:= $(SRCS_BONUS:%.c=%.o)
