@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:19:25 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 16:50:05 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 13:11:49 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ static void	s_lst_make(t_list **lst)
 	t_list	*second;
 	t_list	*third;
 
-	if (!lst || !(*lst)->next)
-		return ;
-	first = *lst;
-	second = (*lst)->next;
-	third = second->next;
-	second->next = first;
-	first->next = third;
-	*lst = second;
+	if (lst && *lst && (*lst)->next)
+	{	
+		first = *lst;
+		second = (*lst)->next;
+		third = second->next;
+		second->next = first;
+		first->next = third;
+		*lst = second;
+	}
 }
 
 // Swap the first 2 elements at the top of stack 'c'
@@ -86,19 +87,14 @@ void	p_lst(t_list *lst[LS], char c)
 	t_list	**lst_b;
 	char	*str;
 
-	if (c == 'a')
+	lst_a = &lst[(c - 'a' + 1) % 2];
+	lst_b = &lst[(c - 'a') % 2];
+	if (lst_a && *lst_a)
 	{
-		lst_a = &lst[B];
-		lst_b = &lst[A];
+		node = *lst_a;
+		*lst_a = (*lst_a)->next;
+		ft_lstadd_front(lst_b, node);
 	}
-	else
-	{
-		lst_a = &lst[A];
-		lst_b = &lst[B];
-	}
-	node = *lst_a;
-	*lst_a = (*lst_a)->next;
-	ft_lstadd_front(lst_b, node);
 	if (c == 'a')
 		str = "pa\n";
 	else

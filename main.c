@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 16:36:09 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:37:09 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int	main(int argc, char *argv[])
 	init_list(lst);
 	len = read_args(argc, argv, lst);
 	if (len < 0)
-		print_error();
+		print_error("Error\n");
 	else if (len == 0)
-		clear_exit(lst, 0);
+		clean_lst_exit(lst, 0);
 	else
 		make_sort(argc, argv, lst, len);
 	print_out(lst[OUT]);
-	clear_exit(lst, 0);
+	clean_lst_exit(lst, 0);
 }

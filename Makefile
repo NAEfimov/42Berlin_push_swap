@@ -1,4 +1,5 @@
 NAME        := push_swap
+BONUS		:= checker
 
 #------------------------------------------------#
 #   INGREDIENTS                                  #
@@ -41,8 +42,28 @@ SRCS		:=		\
 	div_lst_b.c		\
 	div_lst_init.c
 
+SRCS_BONUS	:=			\
+	_bonus_checker.c	\
+	_bonus_str.c		\
+	_bonus_opr.c		\
+	read_lst.c			\
+	print_lst.c			\
+	utils_lst.c			\
+	sort_opr_r.c		\
+	sort_opr_rr.c		\
+	sort_opr_sp.c		\
+	sort_utl.c			\
+	sort_lst.c			\
+	cmd_lst.c			\
+	sort_three.c		\
+	div_lst_a.c			\
+	div_lst_b.c			\
+	div_lst_init.c
+
 OBJS		:= $(SRCS:%.c=%.o)
+OBJS_BONUS	:= $(SRCS_BONUS:%.c=%.o)
 DEPS		:= $(OBJS:.o=.d)
+DEPS_BONUS	:= $(OBJS_BONUS:.o=.d)
 
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
@@ -85,12 +106,27 @@ $(LIBS_TARGET):
 
 -include $(DEPS)
 
+bonus: $(BONUS)
+
+$(BONUS): $(OBJS_BONUS) $(LIBS_TARGET)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(IFLAGS) -o $@ $(OBJS_BONUS) $(LDLIBS)
+	$(info CREATED $(BONUS))
+
+#$(LIBS_TARGET):
+#	$(MAKE) -C $(@D)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(IFLAGS) -c -o $@ $< $(LDLIBS)
+	$(info CREATED $@)
+
+-include $(DEPS_BONUS)
+
 clean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
-	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(OBJS) $(OBJS_BONUS) $(DEPS) $(DEPS_BONUS)
 fclean: clean
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(BONUS)
 
 re:
 	$(MAKE) fclean

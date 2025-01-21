@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:05:27 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 17:05:58 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 12:19:30 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	rr_lst_make(t_list **lst)
 	t_list	*pre_last;
 
 	pre_last = *lst;
-	if (pre_last->next)
+	if (pre_last && pre_last->next)
 	{
 		last = pre_last->next;
 		while (last->next)

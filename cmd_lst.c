@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:40:57 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 17:03:11 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:37:09 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	add_cmd_return(t_list *lst[LS], int c_lst, int num)
 	{
 		cmd = (int *) malloc(sizeof(int) * CMD_SIZE);
 		if (cmd == NULL)
-			clear_exit(lst, -2);
+			clean_lst_exit(lst, -2);
 		cmd[0] = c_lst;
 		cmd[1] = num;
 		node = ft_lstnew(cmd);
 		if (node == NULL)
-			clear_exit(lst, -2);
+			clean_lst_exit(lst, -2);
 		ft_lstadd_front(&lst[CMD], node);
 	}
 }
@@ -49,12 +49,12 @@ void	add_cmd_divide(t_list *lst[LS], int c_lst, int num)
 
 	cmd = (int *) malloc(sizeof(int) * CMD_SIZE);
 	if (cmd == NULL)
-		clear_exit(lst, -2);
+		clean_lst_exit(lst, -2);
 	cmd[0] = c_lst;
 	cmd[1] = num;
 	node = ft_lstnew(cmd);
 	if (node == NULL)
-		clear_exit(lst, -2);
+		clean_lst_exit(lst, -2);
 	ft_lstadd_front(&lst[CMD], node);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:31:16 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 15:31:25 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:37:09 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	read_args(int argc, char *argv[], t_list *lst[LS])
 				return (-1);
 			new_node = ft_lstnew(num);
 			if (new_node == NULL)
-				clear_exit(lst, -2);
+				clean_lst_exit(lst, -2);
 			ft_lstadd_back(&lst[A], new_node);
 			i++;
 		}

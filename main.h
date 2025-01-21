@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 16:05:52 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:37:09 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define LS 4
 
 // Exit
-void	clear_exit(t_list *lst[LS], int err);
+void	clean_lst_exit(t_list *lst[LS], int err);
 
 // Read and check input args
 int		*read_num(char *str);
@@ -39,7 +39,7 @@ void	check_dup(int **num, t_list *lst);
 int		read_args(int argc, char *argv[], t_list *lst[LS]);
 
 // Print messages and lists
-int		print_error(void);
+int		print_error(char *err_msg);
 void	printv_lst(t_list *lst);
 void	printh_lst(t_list *lst, char c);
 void	print_cmd(t_list *lst);

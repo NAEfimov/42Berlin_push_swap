@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:08 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/19 22:18:43 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 12:03:26 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #include "main.h"
 
 // Print a string <*err> on the standard error and return <0>
-int	print_error(void)
+int	print_error(char *err_msg)
 {
-	write(2, "Error\n", 6);
+	int	len;
+
+	len = ft_strlen(err_msg);
+	write(2, err_msg, len);
 	return (1);
 }
 

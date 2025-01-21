@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:46:11 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 17:04:24 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:37:09 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_list(t_list *lst[LS])
 }
 
 // Clear all the lists and exit the programm with <exit_code>
-void	clear_exit(t_list *lst[LS], int exit_code)
+void	clean_lst_exit(t_list *lst[LS], int exit_code)
 {
 	int	i;
 
@@ -55,12 +55,12 @@ void	add_opr_out(t_list *lst[LS], char *str)
 
 	str = ft_strdup((const char *)str);
 	if (str == NULL)
-		clear_exit(lst, -2);
+		clean_lst_exit(lst, -2);
 	node = ft_lstnew((void *)str);
 	if (node == NULL)
 	{
 		free(str);
-		clear_exit(lst, -2);
+		clean_lst_exit(lst, -2);
 	}
 	ft_lstadd_back(&lst[OUT], node);
 }

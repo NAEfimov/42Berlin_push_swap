@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:48:51 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 17:05:54 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 12:18:57 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	r_lst_make(t_list *lst[LS], int stack)
 	t_list	*second;
 
 	first = lst[stack];
-	if (first->next)
+	if (first && first->next)
 	{
 		second = first->next;
 		ft_lstadd_back(&lst[stack], first);
