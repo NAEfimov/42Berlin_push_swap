@@ -1,49 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*   _bonus_checker.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:46:03 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 23:30:51 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:48:26 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
-#include <stdio.h>
+#include "_bonus.h"
 
-#define BUFF_SIZE 100
-
-int main()
+int main(int argc, char *argv[])
 {
-	char	*read_str;
-	char	*str;
-	char	*str_to_add;
+	t_list	*lst[LS];
+	int		len;
 	char	**opr;
-	size_t	i;
 	
-	read_str = malloc(sizeof(char) * (BUFF_SIZE + 1));
-	if (read_str == NULL)
-		return (1);
-	str = ft_strdup("");
-	i = read(0, read_str, BUFF_SIZE);
-	while (i != 0)
+	init_list(lst);
+	len = read_args(argc, argv, lst);
+	if (len < 0)
+		clean_lst_exit(lst, print_error("Error\n"));
+		
+	opr = read_stdio();
+	if (opr == NULL)
+		clean_lst_exit(lst, print_error("Error\n"));
+		
+	if (len > 0)
 	{
-		read_str[i] = '\0';
-		str_to_add = ft_strjoin(str, read_str);
-		free(str);
-		str = str_to_add;
-		i = read(0, read_str, BUFF_SIZE);
+		make_operations(lst, opr);
+		if (ft_lstsize(lst[A]) == len  && !lst[B]
+				&& lst_is_sorted_down(lst[A], len))
+			write(1, "OK\n", 3);
+		else
+			write(1, "KO\n", 3);
 	}
-	opr = ft_split(str, '\n');
-	i = 0;
-	while (opr[i])
-	{
-		printf("%s", opr[i]);
-		i++;
-	}
-	free(str);
-	free(read_str);
-	return (0);
+	clean_opr(opr);
+	clean_lst_exit(lst, 0);
 }
