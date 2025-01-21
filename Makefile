@@ -37,7 +37,8 @@ SRCS		:=			\
 	ps_sort_utl.c		\
 	ps_sort_lst.c		\
 	ps_cmd_lst.c		\
-	ps_sort_three.c		\
+	ps_sort_triad.c		\
+	ps_sort_triad_utl.c	\
 	ps_div_lst_a.c		\
 	ps_div_lst_b.c		\
 	ps_div_lst_init.c
@@ -55,7 +56,8 @@ SRCS_BONUS	:=			\
 	ps_sort_utl.c		\
 	ps_sort_lst.c		\
 	ps_cmd_lst.c		\
-	ps_sort_three.c		\
+	ps_sort_triad.c		\
+	ps_sort_triad_utl.c	\
 	ps_div_lst_a.c		\
 	ps_div_lst_b.c		\
 	ps_div_lst_init.c

@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:24:18 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/21 14:37:09 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 18:29:40 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	make_sort(int argc, char *argv[], t_list *lst[LS], int len);
 void	sort_lst(t_list *lst[LS], int len, int to_btm);
 void	sort_pair_a(t_list *lst[LS], int len_a, int len_b);
 void	sort_pair_b(t_list *lst[LS], int len_a, int len_b);
+void	sort_triad_a_alone(t_list *lst[LS]);
+void	sort_triad_b_alone(t_list *lst[LS]);
 void	sort_pair_ss(t_list *lst[LS], int opr_a, int opr_b, char c);
 void	sort_pair_rr(t_list *lst[LS], int opr_a, int opr_b, char c);
 int		calc_opr_a(t_list *a, int len);

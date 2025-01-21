@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   div_lst_init.c                                     :+:      :+:    :+:   */
+/*   ps_div_lst_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:17:26 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 16:33:41 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 18:25:28 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void	divide_init_a(t_list *lst[LS], int to_btm, int to_top)
 	cmd = get_cmd(&lst[CMD]);
 	if (cmd[1] > 3)
 		divide_init_a_third(lst, cmd, to_btm, to_top);
+	else if (cmd[1] == 3 && cmd[1] == ft_lstsize(lst[A]))
+		sort_triad_a_alone(lst);
 	else
 		sort_pair_a(lst, cmd[1], cmd[1]);
 	free(cmd);

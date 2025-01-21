@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   div_lst_a.c                                        :+:      :+:    :+:   */
+/*   ps_div_lst_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:46:33 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/20 15:45:13 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 18:25:13 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void	divide_a(t_list *lst[LS])
 	cmd = get_cmd(&lst[CMD]);
 	while (cmd[1] > 3)
 		divide_a_half(lst, cmd);
-	sort_pair_a(lst, cmd[1], cmd[1]);
+	if (cmd[1] == 3 && cmd[1] == ft_lstsize(lst[A]))
+		sort_triad_a_alone(lst);
+	else
+		sort_pair_a(lst, cmd[1], cmd[1]);
 	free(cmd);
 }

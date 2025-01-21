@@ -6,7 +6,7 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:52:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/21 15:01:20 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 19:17:31 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char *argv[])
 		print_error("Error\n");
 	else if (len == 0)
 		clean_lst_exit(lst, 0);
-	else
+	else if (lst_is_sorted_down(lst[A], len) == 0)
 		make_sort(argc, argv, lst, len);
 	print_out(lst[OUT]);
 	clean_lst_exit(lst, 0);
