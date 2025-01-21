@@ -6,12 +6,14 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:46:03 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/21 14:55:40 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 15:22:21 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_bonus.h"
 
+// Init and read stacks, read array of operations from stdinput
+// Apply operations to the stack and check for sort 
 int	main(int argc, char *argv[])
 {
 	t_list	*lst[LS];

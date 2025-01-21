@@ -6,12 +6,13 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:44:03 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/21 14:47:40 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 15:19:11 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_bonus.h"
 
+// Clean operations array memory
 void	clean_opr(char **opr)
 {
 	int	i;	
@@ -28,6 +29,7 @@ void	clean_opr(char **opr)
 	}
 }
 
+// Check operator for syntax and apply it to the stacks
 int	check_operation(t_list *lst[LS], char *opr)
 {
 	if (!ft_strcmp(opr, "sa") || !ft_strcmp(opr, "sb"))
@@ -49,6 +51,8 @@ int	check_operation(t_list *lst[LS], char *opr)
 	return (0);
 }
 
+// Take next operator from the array and apply it to the stacks
+// If operator is wrong - clean memoty and exit the program
 void	make_operations(t_list *lst[LS], char **opr)
 {
 	int	i;

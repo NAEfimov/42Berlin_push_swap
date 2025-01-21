@@ -6,12 +6,13 @@
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:43:21 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/21 14:56:13 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/21 15:22:04 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_bonus.h"
 
+// Clean allocated memory for the strings
 char	*read_clean(char *buff_str, char *str)
 {
 	if (buff_str)
@@ -21,6 +22,7 @@ char	*read_clean(char *buff_str, char *str)
 	return (NULL);
 }
 
+// Read a string from stdinput
 char	*read_string(char *str)
 {
 	char	*buff_str;
@@ -47,6 +49,8 @@ char	*read_string(char *str)
 	return (str);
 }
 
+// Read a string from stdinput, split it by the lines
+// and return as an array of strings with operations
 char	**read_stdio(void)
 {
 	char	*str;
