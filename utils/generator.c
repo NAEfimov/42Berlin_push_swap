@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
     // Close the file
     fclose(file);
 
-    printf("Array written to file 'arg'.\n");
+    // printf("Array written to file 'arg'.\n");
 
     // Free allocated memory
     free(arr);

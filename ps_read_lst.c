@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_lst.c                                         :+:      :+:    :+:   */
+/*   ps_read_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nefimov <nefimov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:31:16 by nefimov           #+#    #+#             */
-/*   Updated: 2025/01/21 14:37:09 by nefimov          ###   ########.fr       */
+/*   Updated: 2025/01/22 13:22:48 by nefimov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,27 @@ int	*read_num(char *str)
 	long int	num;
 	int			sign;
 	int			*read;
+	int			is_num;
 
 	sign = 1;
 	num = 0;
+	is_num = 0;
 	while (*str == ' ' || *str == '\t' || *str == '\n')
 		str++;
 	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
+		if (*str++ == '-')
 			sign = -1;
-		str++;
-	}
 	while (*str >= '0' && *str <= '9')
+	{
 		num = num * 10 + (*str++ - '0');
+		is_num = 1;
+	}
 	num = sign * num;
-	if (*str != '\0' || num < INT_MIN || num > INT_MAX)
+	if (is_num == 0 || *str != '\0' || num < INT_MIN || num > INT_MAX)
 		return (NULL);
 	read = malloc(sizeof(int));
-	if (read == NULL)
-		return (NULL);
-	*read = (int) num;
+	if (read != NULL)
+		*read = (int) num;
 	return (read);
 }
 
